@@ -1,0 +1,3751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="no-referrer">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" type="text/css" integrity="sha384-VEpVDzPR2x8NbTDZ8NFW4AWbtT2g/ollEzX/daZdW/YvUBlbgVtsxMftnJ84k0Cn" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha384-fJU6sGmyn07b+uD1nMk7/iSb4yvaowcueiQhfVgQuD98rfva8mcr1eSvjchfpMrH" crossorigin="anonymous"></script><script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" integrity="sha384-rgWRqC0OFPisxlUvl332tiM/qmaNxnlY46eksSZD84t+s2vZlqGeHrncwIRX7CGp" crossorigin="anonymous"></script><script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js" integrity="sha384-7PXRkl4YJnEpP8uU4ev9652TTZSxrqC8uOpcV1ftVEC7LVyLZqqDUAaq+Y+lGgr9" crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><style>
+          .target:before {
+            content: "";
+            display: block;
+            height: 50px;
+            margin: -20px 0 0;
+          }
+          @media only screen and (min-width:1900px) {
+            .container {
+              width: 1800px;
+              }
+          }
+          .footer {
+            margin-top:60px;
+            padding-top:60px;
+            width: 100%;
+            height: 180px;
+            background-color: #f5f5f5;
+          }
+          .clickable {
+            cursor: pointer;
+          }
+          .panel-heading > h3:before {
+            font-family: 'Glyphicons Halflings';
+            content: "\e114"; /* glyphicon-chevron-down */
+            padding-right: 1em;
+          }
+          .panel-heading.collapsed > h3:before {
+            content: "\e080"; /* glyphicon-chevron-right */
+          }
+        </style>
+<title>Informe de Escaneo Nmap 7.92</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top"><div class="container-fluid">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span></a>
+</div>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"><ul class="nav navbar-nav">
+<li><a href="#scannedhosts">Hosts Escaneados</a></li>
+<li><a href="#onlinehosts">Hosts Online</a></li>
+<li><a href="#openservices">Servicios abiertos</a></li>
+</ul></div>
+</div></nav><div class="container">
+<div class="jumbotron">
+<h1>Informe de Escaneo (Auditoría CAJA NEGRA)<br><small>Nmap 7.92</small>
+</h1>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">nmap -Pn -sC -sV -p21,22,31,135,139,445,554,2869,5357,10243,49152,49153,49154,49155,49156,49157,21,22,23,25,53,80,111,139,445,512,513,514,1099,1524,2049,2121,3306,3632,5432,5900,6000,6667,6697,8009,8180,8787,38933,44132,45563,50999,21,22,80,135,139,445,1617,3306,3389,3700,3820,3920,4848,5985,7676,8020,8027,8080,8181,8383,8484,8585,8686,9200,9300,47001,49152,49153,49154,49155,49156,49158,49159,49228,49229,49316,49324,49328,49329,49330 -oX vulnerabilidades.xml --reason --script=vuln 10.5.1.12-20</pre>
+<p class="lead">En cada Host Online, se muestran las vulnerabilidades encontradas, omitir sección "Servicios Abiertos".<br><br>Jueves 17 de Febrero 21:31:31 2022 – Jueves 17 de Febrero 22:07:35 2022<br>9 hosts escaneados.
+              3 hosts encendidos.
+              6 hosts apagados.
+            </p>
+<div class="progress">
+<div class="progress-bar progress-bar-success" style="width:33.3333333333333%;">3<span class="sr-only"></span>
+</div>
+<div class="progress-bar progress-bar-danger" style="width:66.6666666666667%;">6<span class="sr-only"></span>
+</div>
+</div>
+</div>
+<h2 id="scannedhosts" class="target">Hosts Escaneados</h2>
+<div class="table-responsive"><table id="table-overview" class="table table-striped dataTable" role="grid">
+<thead><tr>
+<th>Estado</th>
+<th>Dirección IP</th>
+<th>Hostname</th>
+<th>TCP (abierto)</th>
+<th>UDP (abierto)</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><span class="label label-success">up</span></td>
+<td>10.5.1.12</td>
+<td></td>
+<td>16</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="label label-success">up</span></td>
+<td>10.5.1.18</td>
+<td></td>
+<td>30</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="label label-success">up</span></td>
+<td>10.5.1.20</td>
+<td></td>
+<td>40</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<script>
+            $(document).ready(function() {
+              $('#table-overview').DataTable();
+            });
+            $('#table-overview').DataTable( {
+              "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ]
+            });
+          </script><h2 id="onlinehosts" class="target">Hosts Online</h2>
+<div class="panel panel-default">
+<div class="panel-heading clickable" data-toggle="collapse" data-target="#10-5-1-12"><h3 class="panel-title">10.5.1.12</h3></div>
+<div class="panel-body collapse in" id="10-5-1-12">
+<h4>Puertos</h4>
+<div class="table-responsive"><table class="table table-bordered">
+<thead><tr>
+<th>Puerto</th>
+<th>Protocolo</th>
+<th>Estado<br>Razón</th>
+<th>Servicio</th>
+<th>Producto</th>
+<th>Versión</th>
+<th>Información Extra</th>
+</tr></thead>
+<tbody>
+<tr class="success">
+<td title="Port">21</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">ftp</td>
+<td title="Product">FileZilla ftpd</td>
+<td title="Version">0.9.30 beta</td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:filezilla-project:filezilla_server:0.9.30_beta">cpe:/a:filezilla-project:filezilla_server:0.9.30_beta</a><h5>vulners</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  cpe:/a:filezilla-project:filezilla_server:0.9.30_beta: 
+    	VMSA-2008-0014.3	10.0	https://vulners.com/vmware/VMSA-2008-0014.3
+    	VMSA-2008-0018	9.3	https://vulners.com/vmware/VMSA-2008-0018
+    	VMSA-2009-0007	7.5	https://vulners.com/vmware/VMSA-2009-0007
+    	VMSA-2008-0019.1	7.2	https://vulners.com/vmware/VMSA-2008-0019.1</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">22</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">ssh</td>
+<td title="Product">WeOnlyDo sshd</td>
+<td title="Version">2.1.8.98</td>
+<td title="Extra Info">protocol 2.0</td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">31</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">ftp</td>
+<td title="Product">FreeFTPd</td>
+<td title="Version">1.0</td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a><h5>vulners</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  FreeFTPd 1.0: 
+    	CVE-2012-6067	10.0	https://vulners.com/cve/CVE-2012-6067
+    	SAINT:E52A832DC65BDA990CC0CB6C5E90106D	7.5	https://vulners.com/saint/SAINT:E52A832DC65BDA990CC0CB6C5E90106D	*EXPLOIT*
+    	SAINT:B0C91DB6CC74DF71C22FA493E060BFA1	7.5	https://vulners.com/saint/SAINT:B0C91DB6CC74DF71C22FA493E060BFA1	*EXPLOIT*
+    	SAINT:5C641AAB1A13783356628966CEFE2C4E	7.5	https://vulners.com/saint/SAINT:5C641AAB1A13783356628966CEFE2C4E	*EXPLOIT*
+    	SAINT:3C63B2AD63630BFDDCA758E4396799B8	7.5	https://vulners.com/saint/SAINT:3C63B2AD63630BFDDCA758E4396799B8	*EXPLOIT*
+    	PACKETSTORM:83039	7.5	https://vulners.com/packetstorm/PACKETSTORM:83039	*EXPLOIT*
+    	MSF:EXPLOIT/WINDOWS/FTP/FREEFTPD_USER	7.5	https://vulners.com/metasploit/MSF:EXPLOIT/WINDOWS/FTP/FREEFTPD_USER	*EXPLOIT*
+    	CVE-2005-3683	7.5	https://vulners.com/cve/CVE-2005-3683
+    	SECURITYVULNS:VULN:6141	0.0	https://vulners.com/securityvulns/SECURITYVULNS:VULN:6141
+    	SECURITYVULNS:VULN:5461	0.0	https://vulners.com/securityvulns/SECURITYVULNS:VULN:5461</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">135</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">msrpc</td>
+<td title="Product">Microsoft Windows RPC</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">139</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">netbios-ssn</td>
+<td title="Product">Microsoft Windows netbios-ssn</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">445</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">microsoft-ds</td>
+<td title="Product">Microsoft Windows 7 - 10 microsoft-ds</td>
+<td title="Version"></td>
+<td title="Extra Info">workgroup: WORKGROUP</td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">554</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">rtsp</td>
+<td title="Product"></td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">2869</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">http</td>
+<td title="Product">Microsoft HTTPAPI httpd</td>
+<td title="Version">2.0</td>
+<td title="Extra Info">SSDP/UPnP</td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a><h5>http-stored-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any stored XSS vulnerabilities.</pre>
+<h5>http-dombased-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any DOM based XSS.</pre>
+<h5>http-aspnet-debug</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">ERROR: Script execution failed (use -d to debug)</pre>
+<h5>http-csrf</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any CSRF vulnerabilities.</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">5357</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">http</td>
+<td title="Product">Microsoft HTTPAPI httpd</td>
+<td title="Version">2.0</td>
+<td title="Extra Info">SSDP/UPnP</td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a><h5>http-csrf</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any CSRF vulnerabilities.</pre>
+<h5>http-stored-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any stored XSS vulnerabilities.</pre>
+<h5>http-dombased-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any DOM based XSS.</pre>
+<h5>http-server-header</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Microsoft-HTTPAPI/2.0</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">10243</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">http</td>
+<td title="Product">Microsoft HTTPAPI httpd</td>
+<td title="Version">2.0</td>
+<td title="Extra Info">SSDP/UPnP</td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a><h5>http-stored-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any stored XSS vulnerabilities.</pre>
+<h5>http-dombased-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any DOM based XSS.</pre>
+<h5>http-csrf</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any CSRF vulnerabilities.</pre>
+<h5>http-server-header</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Microsoft-HTTPAPI/2.0</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">49152</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">msrpc</td>
+<td title="Product">Microsoft Windows RPC</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">49153</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">msrpc</td>
+<td title="Product">Microsoft Windows RPC</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">49154</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">msrpc</td>
+<td title="Product">Microsoft Windows RPC</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">49155</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">msrpc</td>
+<td title="Product">Microsoft Windows RPC</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">49156</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">msrpc</td>
+<td title="Product">Microsoft Windows RPC</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">49157</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">msrpc</td>
+<td title="Product">Microsoft Windows RPC</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+</tbody>
+</table></div>
+<h4>Host Script</h4>
+<h5>samba-vuln-cve-2012-1182</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">NT_STATUS_ACCESS_DENIED</pre>
+<h5>smb-vuln-ms17-010</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
+    State: VULNERABLE
+    IDs:  CVE:CVE-2017-0143
+    Risk factor: HIGH
+      A critical remote code execution vulnerability exists in Microsoft SMBv1
+       servers (ms17-010).
+          
+    Disclosure date: 2017-03-14
+    References:
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0143
+      https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+      https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
+</pre>
+<h5>smb-vuln-ms10-054</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">false</pre>
+<h5>smb-vuln-ms10-061</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">NT_STATUS_ACCESS_DENIED</pre>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading clickable" data-toggle="collapse" data-target="#10-5-1-18"><h3 class="panel-title">10.5.1.18</h3></div>
+<div class="panel-body collapse in" id="10-5-1-18">
+<h4>Puertos</h4>
+<div class="table-responsive"><table class="table table-bordered">
+<thead><tr>
+<th>Puerto</th>
+<th>Protocolo</th>
+<th>Estado<br>Razón</th>
+<th>Servicio</th>
+<th>Producto</th>
+<th>Versión</th>
+<th>Información Extra</th>
+</tr></thead>
+<tbody>
+<tr class="success">
+<td title="Port">21</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">ftp</td>
+<td title="Product">vsftpd</td>
+<td title="Version">2.3.4</td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:vsftpd:vsftpd:2.3.4">cpe:/a:vsftpd:vsftpd:2.3.4</a><h5>ftp-vsftpd-backdoor</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  vsFTPd version 2.3.4 backdoor
+    State: VULNERABLE (Exploitable)
+    IDs:  CVE:CVE-2011-2523  BID:48539
+      vsFTPd version 2.3.4 backdoor, this was reported on 2011-07-04.
+    Disclosure date: 2011-07-03
+    Exploit results:
+      Shell command: id
+      Results: uid=0(root) gid=0(root)
+    References:
+      http://scarybeastsecurity.blogspot.com/2011/07/alert-vsftpd-download-backdoored.html
+      https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/unix/ftp/vsftpd_234_backdoor.rb
+      https://www.securityfocus.com/bid/48539
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-2523
+</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">22</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">ssh</td>
+<td title="Product">OpenSSH</td>
+<td title="Version">4.7p1 Debian 8ubuntu1</td>
+<td title="Extra Info">protocol 2.0</td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:openbsd:openssh:4.7p1">cpe:/a:openbsd:openssh:4.7p1</a><h5>vulners</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  cpe:/a:openbsd:openssh:4.7p1: 
+    	SECURITYVULNS:VULN:8166	7.5	https://vulners.com/securityvulns/SECURITYVULNS:VULN:8166
+    	MSF:ILITIES/OPENBSD-OPENSSH-CVE-2010-4478/	7.5	https://vulners.com/metasploit/MSF:ILITIES/OPENBSD-OPENSSH-CVE-2010-4478/	*EXPLOIT*
+    	CVE-2010-4478	7.5	https://vulners.com/cve/CVE-2010-4478
+    	CVE-2008-1657	6.5	https://vulners.com/cve/CVE-2008-1657
+    	SSV:60656	5.0	https://vulners.com/seebug/SSV:60656	*EXPLOIT*
+    	CVE-2017-15906	5.0	https://vulners.com/cve/CVE-2017-15906
+    	CVE-2010-5107	5.0	https://vulners.com/cve/CVE-2010-5107
+    	MSF:ILITIES/SUSE-CVE-2011-5000/	3.5	https://vulners.com/metasploit/MSF:ILITIES/SUSE-CVE-2011-5000/	*EXPLOIT*
+    	MSF:ILITIES/ORACLE-SOLARIS-CVE-2012-0814/	3.5	https://vulners.com/metasploit/MSF:ILITIES/ORACLE-SOLARIS-CVE-2012-0814/	*EXPLOIT*
+    	MSF:ILITIES/GENTOO-LINUX-CVE-2011-5000/	3.5	https://vulners.com/metasploit/MSF:ILITIES/GENTOO-LINUX-CVE-2011-5000/	*EXPLOIT*
+    	MSF:ILITIES/AMAZON-LINUX-AMI-ALAS-2012-99/	3.5	https://vulners.com/metasploit/MSF:ILITIES/AMAZON-LINUX-AMI-ALAS-2012-99/	*EXPLOIT*
+    	CVE-2012-0814	3.5	https://vulners.com/cve/CVE-2012-0814
+    	CVE-2011-5000	3.5	https://vulners.com/cve/CVE-2011-5000
+    	CVE-2008-5161	2.6	https://vulners.com/cve/CVE-2008-5161
+    	CVE-2011-4327	2.1	https://vulners.com/cve/CVE-2011-4327
+    	MSF:ILITIES/SSH-OPENSSH-X11USELOCALHOST-X11-FORWARDING-SESSION-HIJACK/	1.2	https://vulners.com/metasploit/MSF:ILITIES/SSH-OPENSSH-X11USELOCALHOST-X11-FORWARDING-SESSION-HIJACK/	*EXPLOIT*
+    	CVE-2008-3259	1.2	https://vulners.com/cve/CVE-2008-3259
+    	SECURITYVULNS:VULN:9455	0.0	https://vulners.com/securityvulns/SECURITYVULNS:VULN:9455</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">23</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">telnet</td>
+<td title="Product">Linux telnetd</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:linux:linux_kernel">cpe:/o:linux:linux_kernel</a></td></tr>
+<tr class="success">
+<td title="Port">25</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">smtp</td>
+<td title="Product">Postfix smtpd</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:postfix:postfix">cpe:/a:postfix:postfix</a><h5>sslv2-drown</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">ERROR: Script execution failed (use -d to debug)</pre>
+<h5>ssl-dh-params</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  Anonymous Diffie-Hellman Key Exchange MitM Vulnerability
+    State: VULNERABLE
+      Transport Layer Security (TLS) services that use anonymous
+      Diffie-Hellman key exchange only provide protection against passive
+      eavesdropping, and are vulnerable to active man-in-the-middle attacks
+      which could completely compromise the confidentiality and integrity
+      of any data exchanged over the resulting session.
+    Check results:
+      ANONYMOUS DH GROUP 1
+            Cipher Suite: TLS_DH_anon_EXPORT_WITH_RC4_40_MD5
+            Modulus Type: Safe prime
+            Modulus Source: Unknown/Custom-generated
+            Modulus Length: 512
+            Generator Length: 8
+            Public Key Length: 512
+    References:
+      https://www.ietf.org/rfc/rfc2246.txt
+  
+  Transport Layer Security (TLS) Protocol DHE_EXPORT Ciphers Downgrade MitM (Logjam)
+    State: VULNERABLE
+    IDs:  CVE:CVE-2015-4000  BID:74733
+      The Transport Layer Security (TLS) protocol contains a flaw that is
+      triggered when handling Diffie-Hellman key exchanges defined with
+      the DHE_EXPORT cipher. This may allow a man-in-the-middle attacker
+      to downgrade the security of a TLS session to 512-bit export-grade
+      cryptography, which is significantly weaker, allowing the attacker
+      to more easily break the encryption and monitor or tamper with
+      the encrypted stream.
+    Disclosure date: 2015-5-19
+    Check results:
+      EXPORT-GRADE DH GROUP 1
+            Cipher Suite: TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA
+            Modulus Type: Safe prime
+            Modulus Source: Unknown/Custom-generated
+            Modulus Length: 512
+            Generator Length: 8
+            Public Key Length: 512
+    References:
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4000
+      https://www.securityfocus.com/bid/74733
+      https://weakdh.org
+  
+  Diffie-Hellman Key Exchange Insufficient Group Strength
+    State: VULNERABLE
+      Transport Layer Security (TLS) services that use Diffie-Hellman groups
+      of insufficient strength, especially those using one of a few commonly
+      shared groups, may be susceptible to passive eavesdropping attacks.
+    Check results:
+      WEAK DH GROUP 1
+            Cipher Suite: TLS_DHE_RSA_WITH_DES_CBC_SHA
+            Modulus Type: Safe prime
+            Modulus Source: postfix builtin
+            Modulus Length: 1024
+            Generator Length: 8
+            Public Key Length: 1024
+    References:
+      https://weakdh.org
+</pre>
+<h5>ssl-poodle</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  SSL POODLE information leak
+    State: VULNERABLE
+    IDs:  CVE:CVE-2014-3566  BID:70574
+          The SSL protocol 3.0, as used in OpenSSL through 1.0.1i and other
+          products, uses nondeterministic CBC padding, which makes it easier
+          for man-in-the-middle attackers to obtain cleartext data via a
+          padding-oracle attack, aka the "POODLE" issue.
+    Disclosure date: 2014-10-14
+    Check results:
+      TLS_RSA_WITH_AES_128_CBC_SHA
+    References:
+      https://www.openssl.org/~bodo/ssl-poodle.pdf
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3566
+      https://www.imperialviolet.org/2014/10/14/poodle.html
+      https://www.securityfocus.com/bid/70574
+</pre>
+<h5>smtp-vuln-cve2010-4344</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  The SMTP server is not Exim: NOT VULNERABLE
+</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">53</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">domain</td>
+<td title="Product">ISC BIND</td>
+<td title="Version">9.4.2</td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:isc:bind:9.4.2">cpe:/a:isc:bind:9.4.2</a><h5>vulners</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  cpe:/a:isc:bind:9.4.2: 
+    	SSV:60184	8.5	https://vulners.com/seebug/SSV:60184	*EXPLOIT*
+    	MSF:ILITIES/DNS-BIND-CVE-2012-1667/	8.5	https://vulners.com/metasploit/MSF:ILITIES/DNS-BIND-CVE-2012-1667/	*EXPLOIT*
+    	MSF:ILITIES/APPLE-OSX-BIND-CVE-2012-1667/	8.5	https://vulners.com/metasploit/MSF:ILITIES/APPLE-OSX-BIND-CVE-2012-1667/	*EXPLOIT*
+    	CVE-2012-1667	8.5	https://vulners.com/cve/CVE-2012-1667
+    	SSV:60292	7.8	https://vulners.com/seebug/SSV:60292	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-ELSA-2015-2658/	7.8	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-ELSA-2015-2658/	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-ELSA-2015-2656/	7.8	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-ELSA-2015-2656/	*EXPLOIT*
+    	MSF:ILITIES/DEBIAN-DSA-2560/	7.8	https://vulners.com/metasploit/MSF:ILITIES/DEBIAN-DSA-2560/	*EXPLOIT*
+    	CVE-2014-8500	7.8	https://vulners.com/cve/CVE-2014-8500
+    	CVE-2012-5166	7.8	https://vulners.com/cve/CVE-2012-5166
+    	CVE-2012-4244	7.8	https://vulners.com/cve/CVE-2012-4244
+    	CVE-2012-3817	7.8	https://vulners.com/cve/CVE-2012-3817
+    	CVE-2008-4163	7.8	https://vulners.com/cve/CVE-2008-4163
+    	CVE-2010-0382	7.6	https://vulners.com/cve/CVE-2010-0382
+    	EXPLOITPACK:D6DDF5E24DE171DAAD71FD95FC1B67F2	7.2	https://vulners.com/exploitpack/EXPLOITPACK:D6DDF5E24DE171DAAD71FD95FC1B67F2	*EXPLOIT*
+    	EDB-ID:42121	7.2	https://vulners.com/exploitdb/EDB-ID:42121	*EXPLOIT*
+    	CVE-2017-3141	7.2	https://vulners.com/cve/CVE-2017-3141
+    	CVE-2015-8461	7.1	https://vulners.com/cve/CVE-2015-8461
+    	CVE-2021-25216	6.8	https://vulners.com/cve/CVE-2021-25216
+    	CVE-2015-8704	6.8	https://vulners.com/cve/CVE-2015-8704
+    	CVE-2009-0025	6.8	https://vulners.com/cve/CVE-2009-0025
+    	CVE-2015-8705	6.6	https://vulners.com/cve/CVE-2015-8705
+    	MSF:ILITIES/LINUXRPM-RHSA-2010-0976/	6.4	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2010-0976/	*EXPLOIT*
+    	MSF:ILITIES/APPLE-OSX-APACHE-CVE-2010-3614/	6.4	https://vulners.com/metasploit/MSF:ILITIES/APPLE-OSX-APACHE-CVE-2010-3614/	*EXPLOIT*
+    	CVE-2010-3614	6.4	https://vulners.com/cve/CVE-2010-3614
+    	SSV:30099	5.0	https://vulners.com/seebug/SSV:30099	*EXPLOIT*
+    	SSV:20595	5.0	https://vulners.com/seebug/SSV:20595	*EXPLOIT*
+    	PACKETSTORM:157836	5.0	https://vulners.com/packetstorm/PACKETSTORM:157836	*EXPLOIT*
+    	MSF:ILITIES/VMSA-2012-0016-CVE-2012-1033/	5.0	https://vulners.com/metasploit/MSF:ILITIES/VMSA-2012-0016-CVE-2012-1033/	*EXPLOIT*
+    	MSF:ILITIES/UBUNTU-CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/UBUNTU-CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/SUSE-CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/SUSE-CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/REDHAT_LINUX-CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/REDHAT_LINUX-CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/ORACLE_LINUX-CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/ORACLE_LINUX-CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/ORACLE-SOLARIS-CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/ORACLE-SOLARIS-CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-ELSA-2012-0717/	5.0	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-ELSA-2012-0717/	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-ELSA-2012-0716/	5.0	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-ELSA-2012-0716/	*EXPLOIT*
+    	MSF:ILITIES/IBM-AIX-CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/IBM-AIX-CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP1-CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP1-CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/HPUX-CVE-2012-1033/	5.0	https://vulners.com/metasploit/MSF:ILITIES/HPUX-CVE-2012-1033/	*EXPLOIT*
+    	MSF:ILITIES/GENTOO-LINUX-CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/GENTOO-LINUX-CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/GENTOO-LINUX-CVE-2012-1033/	5.0	https://vulners.com/metasploit/MSF:ILITIES/GENTOO-LINUX-CVE-2012-1033/	*EXPLOIT*
+    	MSF:ILITIES/F5-BIG-IP-CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/F5-BIG-IP-CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/F5-BIG-IP-CVE-2012-1033/	5.0	https://vulners.com/metasploit/MSF:ILITIES/F5-BIG-IP-CVE-2012-1033/	*EXPLOIT*
+    	MSF:ILITIES/DNS-BIND-CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/DNS-BIND-CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/DNS-BIND-CVE-2012-1033/	5.0	https://vulners.com/metasploit/MSF:ILITIES/DNS-BIND-CVE-2012-1033/	*EXPLOIT*
+    	MSF:ILITIES/DEBIAN-CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/DEBIAN-CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/CENTOS_LINUX-CVE-2016-9131/	5.0	https://vulners.com/metasploit/MSF:ILITIES/CENTOS_LINUX-CVE-2016-9131/	*EXPLOIT*
+    	MSF:ILITIES/CENTOS_LINUX-CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/CENTOS_LINUX-CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/CENTOS_LINUX-CVE-2012-1033/	5.0	https://vulners.com/metasploit/MSF:ILITIES/CENTOS_LINUX-CVE-2012-1033/	*EXPLOIT*
+    	MSF:ILITIES/AMAZON_LINUX-CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/AMAZON_LINUX-CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/ALPINE-LINUX-CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/ALPINE-LINUX-CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/AIX-7.2.1-BIND_ADVISORY14_CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/AIX-7.2.1-BIND_ADVISORY14_CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/AIX-7.2.0-BIND_ADVISORY14_CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/AIX-7.2.0-BIND_ADVISORY14_CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/AIX-7.1.3-BIND_ADVISORY14_CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/AIX-7.1.3-BIND_ADVISORY14_CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/AIX-6.1.9-BIND_ADVISORY14_CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/AIX-6.1.9-BIND_ADVISORY14_CVE-2016-8864/	*EXPLOIT*
+    	MSF:ILITIES/AIX-5.3.12-BIND_ADVISORY14_CVE-2016-8864/	5.0	https://vulners.com/metasploit/MSF:ILITIES/AIX-5.3.12-BIND_ADVISORY14_CVE-2016-8864/	*EXPLOIT*
+    	FBC03933-7A65-52F3-83F4-4B2253A490B6	5.0	https://vulners.com/githubexploit/FBC03933-7A65-52F3-83F4-4B2253A490B6	*EXPLOIT*
+    	CVE-2021-25219	5.0	https://vulners.com/cve/CVE-2021-25219
+    	CVE-2021-25215	5.0	https://vulners.com/cve/CVE-2021-25215
+    	CVE-2020-8617	5.0	https://vulners.com/cve/CVE-2020-8617
+    	CVE-2020-8616	5.0	https://vulners.com/cve/CVE-2020-8616
+    	CVE-2017-3145	5.0	https://vulners.com/cve/CVE-2017-3145
+    	CVE-2016-9444	5.0	https://vulners.com/cve/CVE-2016-9444
+    	CVE-2016-9131	5.0	https://vulners.com/cve/CVE-2016-9131
+    	CVE-2016-8864	5.0	https://vulners.com/cve/CVE-2016-8864
+    	CVE-2016-2848	5.0	https://vulners.com/cve/CVE-2016-2848
+    	CVE-2016-1286	5.0	https://vulners.com/cve/CVE-2016-1286
+    	CVE-2015-8000	5.0	https://vulners.com/cve/CVE-2015-8000
+    	CVE-2012-1033	5.0	https://vulners.com/cve/CVE-2012-1033
+    	CVE-2011-4313	5.0	https://vulners.com/cve/CVE-2011-4313
+    	CVE-2011-1910	5.0	https://vulners.com/cve/CVE-2011-1910
+    	CVE-2009-0265	5.0	https://vulners.com/cve/CVE-2009-0265
+    	1337DAY-ID-34485	5.0	https://vulners.com/zdt/1337DAY-ID-34485	*EXPLOIT*
+    	SSV:11919	4.3	https://vulners.com/seebug/SSV:11919	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2017-3143/	4.3	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2017-3143/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2017-3142/	4.3	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2017-3142/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2017-10684/	4.3	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2017-10684/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP1-CVE-2017-3142/	4.3	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP1-CVE-2017-3142/	*EXPLOIT*
+    	MSF:ILITIES/HPUX-CVE-2017-3143/	4.3	https://vulners.com/metasploit/MSF:ILITIES/HPUX-CVE-2017-3143/	*EXPLOIT*
+    	MSF:ILITIES/HPUX-CVE-2017-3142/	4.3	https://vulners.com/metasploit/MSF:ILITIES/HPUX-CVE-2017-3142/	*EXPLOIT*
+    	CVE-2017-3143	4.3	https://vulners.com/cve/CVE-2017-3143
+    	CVE-2017-3142	4.3	https://vulners.com/cve/CVE-2017-3142
+    	CVE-2016-2775	4.3	https://vulners.com/cve/CVE-2016-2775
+    	CVE-2016-1285	4.3	https://vulners.com/cve/CVE-2016-1285
+    	CVE-2010-0097	4.3	https://vulners.com/cve/CVE-2010-0097
+    	CVE-2009-0696	4.3	https://vulners.com/cve/CVE-2009-0696
+    	CVE-2020-8622	4.0	https://vulners.com/cve/CVE-2020-8622
+    	CVE-2016-6170	4.0	https://vulners.com/cve/CVE-2016-6170
+    	CVE-2010-0290	4.0	https://vulners.com/cve/CVE-2010-0290
+    	SSV:14986	2.6	https://vulners.com/seebug/SSV:14986	*EXPLOIT*
+    	CVE-2009-4022	2.6	https://vulners.com/cve/CVE-2009-4022
+    	PACKETSTORM:142800	0.0	https://vulners.com/packetstorm/PACKETSTORM:142800	*EXPLOIT*
+    	MSF:ILITIES/REDHAT_LINUX-CVE-2021-25215/	0.0	https://vulners.com/metasploit/MSF:ILITIES/REDHAT_LINUX-CVE-2021-25215/	*EXPLOIT*
+    	1337DAY-ID-27896	0.0	https://vulners.com/zdt/1337DAY-ID-27896	*EXPLOIT*</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">80</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">http</td>
+<td title="Product">Apache httpd</td>
+<td title="Version">2.2.8</td>
+<td title="Extra Info">(Ubuntu) DAV/2</td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:apache:http_server:2.2.8">cpe:/a:apache:http_server:2.2.8</a><h5>http-vuln-cve2017-1001000</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">ERROR: Script execution failed (use -d to debug)</pre>
+<h5>http-trace</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">TRACE is enabled</pre>
+<h5>http-server-header</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Apache/2.2.8 (Ubuntu) DAV/2</pre>
+<h5>http-csrf</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=10.5.1.18
+  Found the following possible CSRF vulnerabilities: 
+    
+    Path: http://10.5.1.18:80/dvwa/
+    Form id: 
+    Form action: login.php
+    
+    Path: http://10.5.1.18:80/mutillidae/?page=view-someones-blog.php
+    Form id: id-bad-blog-entry-tr
+    Form action: index.php?page=view-someones-blog.php
+    
+    Path: http://10.5.1.18:80/mutillidae/index.php?page=user-info.php
+    Form id: id-bad-cred-tr
+    Form action: ./index.php?page=user-info.php
+    
+    Path: http://10.5.1.18:80/mutillidae/?page=text-file-viewer.php
+    Form id: id-bad-cred-tr
+    Form action: index.php?page=text-file-viewer.php
+</pre>
+<h5>vulners</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  cpe:/a:apache:http_server:2.2.8: 
+    	MSF:ILITIES/LINUXRPM-RHSA-2010-0602/	10.0	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2010-0602/	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-RHSA-2010-0440/	10.0	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2010-0440/	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-RHSA-2010-0162/	10.0	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2010-0162/	*EXPLOIT*
+    	SSV:72403	7.8	https://vulners.com/seebug/SSV:72403	*EXPLOIT*
+    	SSV:26043	7.8	https://vulners.com/seebug/SSV:26043	*EXPLOIT*
+    	SSV:20899	7.8	https://vulners.com/seebug/SSV:20899	*EXPLOIT*
+    	PACKETSTORM:126851	7.8	https://vulners.com/packetstorm/PACKETSTORM:126851	*EXPLOIT*
+    	PACKETSTORM:123527	7.8	https://vulners.com/packetstorm/PACKETSTORM:123527	*EXPLOIT*
+    	PACKETSTORM:122962	7.8	https://vulners.com/packetstorm/PACKETSTORM:122962	*EXPLOIT*
+    	MSF:AUXILIARY/DOS/HTTP/APACHE_RANGE_DOS	7.8	https://vulners.com/metasploit/MSF:AUXILIARY/DOS/HTTP/APACHE_RANGE_DOS	*EXPLOIT*
+    	EXPLOITPACK:186B5FCF5C57B52642E62C06BABC6F83	7.8	https://vulners.com/exploitpack/EXPLOITPACK:186B5FCF5C57B52642E62C06BABC6F83	*EXPLOIT*
+    	EDB-ID:18221	7.8	https://vulners.com/exploitdb/EDB-ID:18221	*EXPLOIT*
+    	CVE-2011-3192	7.8	https://vulners.com/cve/CVE-2011-3192
+    	1337DAY-ID-21170	7.8	https://vulners.com/zdt/1337DAY-ID-21170	*EXPLOIT*
+    	SSV:60913	7.5	https://vulners.com/seebug/SSV:60913	*EXPLOIT*
+    	SSV:12673	7.5	https://vulners.com/seebug/SSV:12673	*EXPLOIT*
+    	SSV:12626	7.5	https://vulners.com/seebug/SSV:12626	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-RHSA-2010-0339/	7.5	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2010-0339/	*EXPLOIT*
+    	ECC3E825-EE29-59D3-BE28-1B30DB15940E	7.5	https://vulners.com/githubexploit/ECC3E825-EE29-59D3-BE28-1B30DB15940E	*EXPLOIT*
+    	CVE-2017-7679	7.5	https://vulners.com/cve/CVE-2017-7679
+    	CVE-2017-3167	7.5	https://vulners.com/cve/CVE-2017-3167
+    	CVE-2013-2249	7.5	https://vulners.com/cve/CVE-2013-2249
+    	SSV:11802	7.1	https://vulners.com/seebug/SSV:11802	*EXPLOIT*
+    	SSV:11762	7.1	https://vulners.com/seebug/SSV:11762	*EXPLOIT*
+    	CVE-2009-1891	7.1	https://vulners.com/cve/CVE-2009-1891
+    	CVE-2009-1890	7.1	https://vulners.com/cve/CVE-2009-1890
+    	SSV:60427	6.9	https://vulners.com/seebug/SSV:60427	*EXPLOIT*
+    	SSV:60386	6.9	https://vulners.com/seebug/SSV:60386	*EXPLOIT*
+    	SSV:60069	6.9	https://vulners.com/seebug/SSV:60069	*EXPLOIT*
+    	CVE-2012-0883	6.9	https://vulners.com/cve/CVE-2012-0883
+    	MSF:ILITIES/UBUNTU-CVE-2018-1312/	6.8	https://vulners.com/metasploit/MSF:ILITIES/UBUNTU-CVE-2018-1312/	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-RHSA-2013-1012/	6.8	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2013-1012/	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-RHSA-2013-1011/	6.8	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2013-1011/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP3-CVE-2018-1312/	6.8	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP3-CVE-2018-1312/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2018-1312/	6.8	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2018-1312/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP1-CVE-2018-1312/	6.8	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP1-CVE-2018-1312/	*EXPLOIT*
+    	MSF:ILITIES/CENTOS_LINUX-CVE-2017-17790/	6.8	https://vulners.com/metasploit/MSF:ILITIES/CENTOS_LINUX-CVE-2017-17790/	*EXPLOIT*
+    	MSF:ILITIES/ALPINE-LINUX-CVE-2018-1312/	6.8	https://vulners.com/metasploit/MSF:ILITIES/ALPINE-LINUX-CVE-2018-1312/	*EXPLOIT*
+    	CVE-2018-1312	6.8	https://vulners.com/cve/CVE-2018-1312
+    	MSF:AUXILIARY/DOS/HTTP/SLOWLORIS	6.4	https://vulners.com/metasploit/MSF:AUXILIARY/DOS/HTTP/SLOWLORIS	*EXPLOIT*
+    	CVE-2017-9788	6.4	https://vulners.com/cve/CVE-2017-9788
+    	VULNERLAB:967	5.8	https://vulners.com/vulnerlab/VULNERLAB:967	*EXPLOIT*
+    	VULNERABLE:967	5.8	https://vulners.com/vulnerlab/VULNERABLE:967	*EXPLOIT*
+    	SSV:67231	5.8	https://vulners.com/seebug/SSV:67231	*EXPLOIT*
+    	SSV:18637	5.8	https://vulners.com/seebug/SSV:18637	*EXPLOIT*
+    	SSV:15088	5.8	https://vulners.com/seebug/SSV:15088	*EXPLOIT*
+    	SSV:12600	5.8	https://vulners.com/seebug/SSV:12600	*EXPLOIT*
+    	PACKETSTORM:84112	5.8	https://vulners.com/packetstorm/PACKETSTORM:84112	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-RHSA-2010-0119/	5.8	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2010-0119/	*EXPLOIT*
+    	EXPLOITPACK:8B4E7E8DAE5A13C8250C6C33307CD66C	5.8	https://vulners.com/exploitpack/EXPLOITPACK:8B4E7E8DAE5A13C8250C6C33307CD66C	*EXPLOIT*
+    	EDB-ID:10579	5.8	https://vulners.com/exploitdb/EDB-ID:10579	*EXPLOIT*
+    	CVE-2009-3555	5.8	https://vulners.com/cve/CVE-2009-3555
+    	MSF:ILITIES/LINUXRPM-RHSA-2013-1208/	5.4	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2013-1208/	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-RHSA-2013-1207/	5.4	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2013-1207/	*EXPLOIT*
+    	SSV:60788	5.1	https://vulners.com/seebug/SSV:60788	*EXPLOIT*
+    	CVE-2013-1862	5.1	https://vulners.com/cve/CVE-2013-1862
+    	SSV:96537	5.0	https://vulners.com/seebug/SSV:96537	*EXPLOIT*
+    	SSV:61874	5.0	https://vulners.com/seebug/SSV:61874	*EXPLOIT*
+    	SSV:20993	5.0	https://vulners.com/seebug/SSV:20993	*EXPLOIT*
+    	SSV:20979	5.0	https://vulners.com/seebug/SSV:20979	*EXPLOIT*
+    	SSV:20969	5.0	https://vulners.com/seebug/SSV:20969	*EXPLOIT*
+    	SSV:19592	5.0	https://vulners.com/seebug/SSV:19592	*EXPLOIT*
+    	PACKETSTORM:105672	5.0	https://vulners.com/packetstorm/PACKETSTORM:105672	*EXPLOIT*
+    	PACKETSTORM:105591	5.0	https://vulners.com/packetstorm/PACKETSTORM:105591	*EXPLOIT*
+    	MSF:ILITIES/UBUNTU-CVE-2018-16228/	5.0	https://vulners.com/metasploit/MSF:ILITIES/UBUNTU-CVE-2018-16228/	*EXPLOIT*
+    	MSF:ILITIES/SUSE-CVE-2014-0231/	5.0	https://vulners.com/metasploit/MSF:ILITIES/SUSE-CVE-2014-0231/	*EXPLOIT*
+    	MSF:ILITIES/APPLE-OSX-WEBSERVER-CVE-2007-6750/	5.0	https://vulners.com/metasploit/MSF:ILITIES/APPLE-OSX-WEBSERVER-CVE-2007-6750/	*EXPLOIT*
+    	MSF:AUXILIARY/SCANNER/HTTP/REWRITE_PROXY_BYPASS	5.0	https://vulners.com/metasploit/MSF:AUXILIARY/SCANNER/HTTP/REWRITE_PROXY_BYPASS	*EXPLOIT*
+    	MSF:AUXILIARY/SCANNER/HTTP/APACHE_OPTIONSBLEED	5.0	https://vulners.com/metasploit/MSF:AUXILIARY/SCANNER/HTTP/APACHE_OPTIONSBLEED	*EXPLOIT*
+    	EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D	5.0	https://vulners.com/exploitpack/EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D	*EXPLOIT*
+    	EXPLOITPACK:460143F0ACAE117DD79BD75EDFDA154B	5.0	https://vulners.com/exploitpack/EXPLOITPACK:460143F0ACAE117DD79BD75EDFDA154B	*EXPLOIT*
+    	EDB-ID:42745	5.0	https://vulners.com/exploitdb/EDB-ID:42745	*EXPLOIT*
+    	EDB-ID:17969	5.0	https://vulners.com/exploitdb/EDB-ID:17969	*EXPLOIT*
+    	CVE-2017-9798	5.0	https://vulners.com/cve/CVE-2017-9798
+    	CVE-2014-0231	5.0	https://vulners.com/cve/CVE-2014-0231
+    	CVE-2014-0098	5.0	https://vulners.com/cve/CVE-2014-0098
+    	CVE-2013-6438	5.0	https://vulners.com/cve/CVE-2013-6438
+    	CVE-2011-3368	5.0	https://vulners.com/cve/CVE-2011-3368
+    	CVE-2010-1452	5.0	https://vulners.com/cve/CVE-2010-1452
+    	CVE-2010-0408	5.0	https://vulners.com/cve/CVE-2010-0408
+    	CVE-2009-3095	5.0	https://vulners.com/cve/CVE-2009-3095
+    	CVE-2008-2364	5.0	https://vulners.com/cve/CVE-2008-2364
+    	CVE-2007-6750	5.0	https://vulners.com/cve/CVE-2007-6750
+    	1337DAY-ID-28573	5.0	https://vulners.com/zdt/1337DAY-ID-28573	*EXPLOIT*
+    	SSV:11668	4.9	https://vulners.com/seebug/SSV:11668	*EXPLOIT*
+    	SSV:11501	4.9	https://vulners.com/seebug/SSV:11501	*EXPLOIT*
+    	CVE-2009-1195	4.9	https://vulners.com/cve/CVE-2009-1195
+    	SSV:30024	4.6	https://vulners.com/seebug/SSV:30024	*EXPLOIT*
+    	CVE-2012-0031	4.6	https://vulners.com/cve/CVE-2012-0031
+    	1337DAY-ID-27465	4.6	https://vulners.com/zdt/1337DAY-ID-27465	*EXPLOIT*
+    	SSV:23169	4.4	https://vulners.com/seebug/SSV:23169	*EXPLOIT*
+    	MSF:ILITIES/HPSMH-CVE-2011-4415/	4.4	https://vulners.com/metasploit/MSF:ILITIES/HPSMH-CVE-2011-4415/	*EXPLOIT*
+    	MSF:ILITIES/HPSMH-CVE-2011-3607/	4.4	https://vulners.com/metasploit/MSF:ILITIES/HPSMH-CVE-2011-3607/	*EXPLOIT*
+    	CVE-2011-3607	4.4	https://vulners.com/cve/CVE-2011-3607
+    	1337DAY-ID-27473	4.4	https://vulners.com/zdt/1337DAY-ID-27473	*EXPLOIT*
+    	SSV:60905	4.3	https://vulners.com/seebug/SSV:60905	*EXPLOIT*
+    	SSV:60657	4.3	https://vulners.com/seebug/SSV:60657	*EXPLOIT*
+    	SSV:60653	4.3	https://vulners.com/seebug/SSV:60653	*EXPLOIT*
+    	SSV:60345	4.3	https://vulners.com/seebug/SSV:60345	*EXPLOIT*
+    	SSV:4786	4.3	https://vulners.com/seebug/SSV:4786	*EXPLOIT*
+    	SSV:3804	4.3	https://vulners.com/seebug/SSV:3804	*EXPLOIT*
+    	SSV:30094	4.3	https://vulners.com/seebug/SSV:30094	*EXPLOIT*
+    	SSV:30056	4.3	https://vulners.com/seebug/SSV:30056	*EXPLOIT*
+    	SSV:24250	4.3	https://vulners.com/seebug/SSV:24250	*EXPLOIT*
+    	SSV:20934	4.3	https://vulners.com/seebug/SSV:20934	*EXPLOIT*
+    	SSV:20555	4.3	https://vulners.com/seebug/SSV:20555	*EXPLOIT*
+    	SSV:19320	4.3	https://vulners.com/seebug/SSV:19320	*EXPLOIT*
+    	PACKETSTORM:109284	4.3	https://vulners.com/packetstorm/PACKETSTORM:109284	*EXPLOIT*
+    	MSF:ILITIES/SUSE-CVE-2012-4558/	4.3	https://vulners.com/metasploit/MSF:ILITIES/SUSE-CVE-2012-4558/	*EXPLOIT*
+    	MSF:ILITIES/SUSE-CVE-2012-3499/	4.3	https://vulners.com/metasploit/MSF:ILITIES/SUSE-CVE-2012-3499/	*EXPLOIT*
+    	MSF:ILITIES/ORACLE-SOLARIS-CVE-2012-4558/	4.3	https://vulners.com/metasploit/MSF:ILITIES/ORACLE-SOLARIS-CVE-2012-4558/	*EXPLOIT*
+    	MSF:ILITIES/IBM-HTTP_SERVER-CVE-2012-3499/	4.3	https://vulners.com/metasploit/MSF:ILITIES/IBM-HTTP_SERVER-CVE-2012-3499/	*EXPLOIT*
+    	MSF:ILITIES/IBM-HTTP_SERVER-CVE-2011-0419/	4.3	https://vulners.com/metasploit/MSF:ILITIES/IBM-HTTP_SERVER-CVE-2011-0419/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2016-4975/	4.3	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2016-4975/	*EXPLOIT*
+    	MSF:ILITIES/HPUX-CVE-2012-4558/	4.3	https://vulners.com/metasploit/MSF:ILITIES/HPUX-CVE-2012-4558/	*EXPLOIT*
+    	MSF:ILITIES/HPSMH-CVE-2011-0419/	4.3	https://vulners.com/metasploit/MSF:ILITIES/HPSMH-CVE-2011-0419/	*EXPLOIT*
+    	MSF:ILITIES/GENTOO-LINUX-CVE-2011-0419/	4.3	https://vulners.com/metasploit/MSF:ILITIES/GENTOO-LINUX-CVE-2011-0419/	*EXPLOIT*
+    	MSF:ILITIES/CENTOS_LINUX-CVE-2012-4558/	4.3	https://vulners.com/metasploit/MSF:ILITIES/CENTOS_LINUX-CVE-2012-4558/	*EXPLOIT*
+    	MSF:ILITIES/CENTOS_LINUX-CVE-2012-3499/	4.3	https://vulners.com/metasploit/MSF:ILITIES/CENTOS_LINUX-CVE-2012-3499/	*EXPLOIT*
+    	MSF:ILITIES/APPLE-OSX-APACHE-CVE-2011-0419/	4.3	https://vulners.com/metasploit/MSF:ILITIES/APPLE-OSX-APACHE-CVE-2011-0419/	*EXPLOIT*
+    	MSF:ILITIES/APACHE-HTTPD-CVE-2012-4558/	4.3	https://vulners.com/metasploit/MSF:ILITIES/APACHE-HTTPD-CVE-2012-4558/	*EXPLOIT*
+    	MSF:ILITIES/APACHE-HTTPD-CVE-2012-3499/	4.3	https://vulners.com/metasploit/MSF:ILITIES/APACHE-HTTPD-CVE-2012-3499/	*EXPLOIT*
+    	EXPLOITPACK:FDCB3D93694E48CD5EE27CE55D6801DE	4.3	https://vulners.com/exploitpack/EXPLOITPACK:FDCB3D93694E48CD5EE27CE55D6801DE	*EXPLOIT*
+    	EDB-ID:35738	4.3	https://vulners.com/exploitdb/EDB-ID:35738	*EXPLOIT*
+    	CVE-2016-4975	4.3	https://vulners.com/cve/CVE-2016-4975
+    	CVE-2013-1896	4.3	https://vulners.com/cve/CVE-2013-1896
+    	CVE-2012-4558	4.3	https://vulners.com/cve/CVE-2012-4558
+    	CVE-2012-3499	4.3	https://vulners.com/cve/CVE-2012-3499
+    	CVE-2012-0053	4.3	https://vulners.com/cve/CVE-2012-0053
+    	CVE-2011-4317	4.3	https://vulners.com/cve/CVE-2011-4317
+    	CVE-2011-3639	4.3	https://vulners.com/cve/CVE-2011-3639
+    	CVE-2011-3348	4.3	https://vulners.com/cve/CVE-2011-3348
+    	CVE-2011-0419	4.3	https://vulners.com/cve/CVE-2011-0419
+    	CVE-2010-0434	4.3	https://vulners.com/cve/CVE-2010-0434
+    	CVE-2008-2939	4.3	https://vulners.com/cve/CVE-2008-2939
+    	CVE-2012-2687	2.6	https://vulners.com/cve/CVE-2012-2687
+    	SSV:60250	1.2	https://vulners.com/seebug/SSV:60250	*EXPLOIT*
+    	CVE-2011-4415	1.2	https://vulners.com/cve/CVE-2011-4415</pre>
+<h5>http-sql-injection</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  Possible sqli for queries:
+    http://10.5.1.18:80/dav/?C=D%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=S%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=N%3BO%3DD%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=M%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=view-someones-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=password-generator.php%27%20OR%20sqlspider&amp;username=anonymous
+    http://10.5.1.18:80/mutillidae/index.php?page=user-info.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=text-file-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=pen-test-tool-lookup.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=credits.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=captured-data.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=home.php&amp;do=toggle-hints%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=change-log.htm%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=notes.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=php-errors.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=source-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=login.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=installation.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=text-file-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=user-info.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=documentation%2Fhow-to-access-Mutillidae-over-Virtual-Box-network.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=browser-info.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=secret-administrative-pages.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=user-poll.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=dns-lookup.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=login.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=arbitrary-file-inclusion.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=framing.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=view-someones-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=site-footer-xss-discussion.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=credits.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=add-to-your-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=documentation%2Fvulnerabilities.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=register.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=html5-storage.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=capture-data.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=home.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=add-to-your-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=home.php&amp;do=toggle-security%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=set-background-color.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=show-log.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=show-log.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=usage-instructions.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=source-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=S%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=N%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=D%3BO%3DD%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=M%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=S%3BO%3DD%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=D%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=N%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=M%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=D%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=S%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=N%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=M%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=D%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=S%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=N%3BO%3DA%27%20OR%20sqlspider
+    http://10.5.1.18:80/dav/?C=M%3BO%3DD%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=view-someones-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=password-generator.php%27%20OR%20sqlspider&amp;username=anonymous
+    http://10.5.1.18:80/mutillidae/index.php?page=user-info.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=text-file-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=pen-test-tool-lookup.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=credits.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=captured-data.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=change-log.htm%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=source-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=login.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=installation.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=user-info.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=documentation%2Fhow-to-access-Mutillidae-over-Virtual-Box-network.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=browser-info.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=secret-administrative-pages.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=user-poll.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=dns-lookup.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=login.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=arbitrary-file-inclusion.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=framing.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=view-someones-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=site-footer-xss-discussion.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=credits.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=add-to-your-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=documentation%2Fvulnerabilities.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=register.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=html5-storage.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=capture-data.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=home.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=add-to-your-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=show-log.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=set-background-color.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=show-log.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=text-file-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=source-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=view-someones-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=password-generator.php%27%20OR%20sqlspider&amp;username=anonymous
+    http://10.5.1.18:80/mutillidae/index.php?page=user-info.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=text-file-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=pen-test-tool-lookup.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=credits.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=captured-data.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=change-log.htm%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=source-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=login.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=installation.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=documentation%2Fhow-to-access-Mutillidae-over-Virtual-Box-network.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=user-info.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=browser-info.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=register.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=html5-storage.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=user-poll.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=dns-lookup.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=login.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=framing.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=arbitrary-file-inclusion.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=view-someones-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=site-footer-xss-discussion.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=credits.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=secret-administrative-pages.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=add-to-your-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=documentation%2Fvulnerabilities.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=capture-data.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=home.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=add-to-your-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=show-log.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=set-background-color.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=show-log.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=text-file-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=source-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=view-someones-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=password-generator.php%27%20OR%20sqlspider&amp;username=anonymous
+    http://10.5.1.18:80/mutillidae/index.php?page=user-info.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=text-file-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=pen-test-tool-lookup.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=credits.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=text-file-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=change-log.htm%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=source-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=login.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=installation.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=register.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=user-info.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=documentation%2Fhow-to-access-Mutillidae-over-Virtual-Box-network.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=browser-info.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=credits.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=user-poll.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=dns-lookup.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=login.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=arbitrary-file-inclusion.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=framing.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=view-someones-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=site-footer-xss-discussion.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=add-to-your-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=documentation%2Fvulnerabilities.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=secret-administrative-pages.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=home.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=html5-storage.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=capture-data.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=add-to-your-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=register.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=set-background-color.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=show-log.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=show-log.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=captured-data.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=source-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=view-someones-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=password-generator.php%27%20OR%20sqlspider&amp;username=anonymous
+    http://10.5.1.18:80/mutillidae/index.php?page=user-info.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=text-file-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=pen-test-tool-lookup.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=credits.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=captured-data.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=change-log.htm%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=source-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=login.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=installation.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=user-info.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=documentation%2Fhow-to-access-Mutillidae-over-Virtual-Box-network.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=browser-info.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=secret-administrative-pages.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=user-poll.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=dns-lookup.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=login.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=arbitrary-file-inclusion.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=framing.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=view-someones-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=site-footer-xss-discussion.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=html5-storage.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=credits.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=add-to-your-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=documentation%2Fvulnerabilities.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=add-to-your-blog.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=capture-data.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=home.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=register.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=set-background-color.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=show-log.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=show-log.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/index.php?page=text-file-viewer.php%27%20OR%20sqlspider
+    http://10.5.1.18:80/mutillidae/?page=source-viewer.php%27%20OR%20sqlspider
+  Possible sqli for forms:
+    Form at path: /mutillidae/index.php, form's action: ./index.php?page=user-info.php. Fields that might be vulnerable:
+      username
+</pre>
+<h5>http-enum</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  /tikiwiki/: Tikiwiki
+  /test/: Test page
+  /phpinfo.php: Possible information file
+  /phpMyAdmin/: phpMyAdmin
+  /doc/: Potentially interesting directory w/ listing on 'apache/2.2.8 (ubuntu) dav/2'
+  /icons/: Potentially interesting folder w/ directory listing
+  /index/: Potentially interesting folder
+</pre>
+<h5>http-dombased-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any DOM based XSS.</pre>
+<h5>http-slowloris-check</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  Slowloris DOS attack
+    State: LIKELY VULNERABLE
+    IDs:  CVE:CVE-2007-6750
+      Slowloris tries to keep many connections to the target web server open and hold
+      them open as long as possible.  It accomplishes this by opening connections to
+      the target web server and sending a partial request. By doing so, it starves
+      the http server's resources causing Denial Of Service.
+      
+    Disclosure date: 2009-09-17
+    References:
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+      http://ha.ckers.org/slowloris/
+</pre>
+<h5>http-stored-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any stored XSS vulnerabilities.</pre>
+<h5>http-fileupload-exploiter</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  
+    Couldn't find a file-type field.</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">111</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">rpcbind</td>
+<td title="Product"></td>
+<td title="Version">2</td>
+<td title="Extra Info">RPC #100000</td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a><h5>rpcinfo</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  program version    port/proto  service
+  100000  2            111/tcp   rpcbind
+  100000  2            111/udp   rpcbind
+  100003  2,3,4       2049/tcp   nfs
+  100003  2,3,4       2049/udp   nfs
+  100005  1,2,3      44132/tcp   mountd
+  100005  1,2,3      52193/udp   mountd
+  100021  1,3,4      34780/udp   nlockmgr
+  100021  1,3,4      38933/tcp   nlockmgr
+  100024  1          45563/tcp   status
+  100024  1          58489/udp   status
+</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">139</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">netbios-ssn</td>
+<td title="Product">Samba smbd</td>
+<td title="Version">3.X - 4.X</td>
+<td title="Extra Info">workgroup: WORKGROUP</td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:samba:samba">cpe:/a:samba:samba</a></td></tr>
+<tr class="success">
+<td title="Port">445</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">netbios-ssn</td>
+<td title="Product">Samba smbd</td>
+<td title="Version">3.X - 4.X</td>
+<td title="Extra Info">workgroup: WORKGROUP</td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:samba:samba">cpe:/a:samba:samba</a></td></tr>
+<tr class="success">
+<td title="Port">512</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">exec</td>
+<td title="Product">netkit-rsh rexecd</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:netkit:netkit">cpe:/a:netkit:netkit</a></td></tr>
+<tr class="success">
+<td title="Port">513</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">login</td>
+<td title="Product">OpenBSD or Solaris rlogind</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">514</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">tcpwrapped</td>
+<td title="Product"></td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">1099</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">java-rmi</td>
+<td title="Product">GNU Classpath grmiregistry</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a><h5>rmi-vuln-classloader</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  RMI registry default configuration remote code execution vulnerability
+    State: VULNERABLE
+      Default configuration of RMI registry allows loading classes from remote URLs which can lead to remote code execution.
+      
+    References:
+      https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/multi/misc/java_rmi_server.rb
+</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">1524</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">bindshell</td>
+<td title="Product">Metasploitable root shell</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">2049</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">nfs</td>
+<td title="Product"></td>
+<td title="Version">2-4</td>
+<td title="Extra Info">RPC #100003</td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">2121</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">ftp</td>
+<td title="Product">ProFTPD</td>
+<td title="Version">1.3.1</td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:proftpd:proftpd:1.3.1">cpe:/a:proftpd:proftpd:1.3.1</a><h5>vulners</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  cpe:/a:proftpd:proftpd:1.3.1: 
+    	SSV:26016	9.0	https://vulners.com/seebug/SSV:26016	*EXPLOIT*
+    	SSV:24282	9.0	https://vulners.com/seebug/SSV:24282	*EXPLOIT*
+    	CVE-2011-4130	9.0	https://vulners.com/cve/CVE-2011-4130
+    	CVE-2019-12815	7.5	https://vulners.com/cve/CVE-2019-12815
+    	739FE495-4675-5A2A-BB93-EEF94AC07632	7.5	https://vulners.com/githubexploit/739FE495-4675-5A2A-BB93-EEF94AC07632	*EXPLOIT*
+    	SSV:20226	7.1	https://vulners.com/seebug/SSV:20226	*EXPLOIT*
+    	PACKETSTORM:95517	7.1	https://vulners.com/packetstorm/PACKETSTORM:95517	*EXPLOIT*
+    	MSF:ILITIES/GENTOO-LINUX-CVE-2010-3867/	7.1	https://vulners.com/metasploit/MSF:ILITIES/GENTOO-LINUX-CVE-2010-3867/	*EXPLOIT*
+    	CVE-2010-3867	7.1	https://vulners.com/cve/CVE-2010-3867
+    	CVE-2010-4652	6.8	https://vulners.com/cve/CVE-2010-4652
+    	CVE-2009-0543	6.8	https://vulners.com/cve/CVE-2009-0543
+    	SSV:12523	5.8	https://vulners.com/seebug/SSV:12523	*EXPLOIT*
+    	CVE-2009-3639	5.8	https://vulners.com/cve/CVE-2009-3639
+    	MSF:ILITIES/SUSE-CVE-2019-18217/	5.0	https://vulners.com/metasploit/MSF:ILITIES/SUSE-CVE-2019-18217/	*EXPLOIT*
+    	CVE-2020-9272	5.0	https://vulners.com/cve/CVE-2020-9272
+    	CVE-2019-19272	5.0	https://vulners.com/cve/CVE-2019-19272
+    	CVE-2019-19271	5.0	https://vulners.com/cve/CVE-2019-19271
+    	CVE-2019-19270	5.0	https://vulners.com/cve/CVE-2019-19270
+    	CVE-2019-18217	5.0	https://vulners.com/cve/CVE-2019-18217
+    	CVE-2016-3125	5.0	https://vulners.com/cve/CVE-2016-3125
+    	CVE-2011-1137	5.0	https://vulners.com/cve/CVE-2011-1137
+    	CVE-2008-7265	4.0	https://vulners.com/cve/CVE-2008-7265
+    	CVE-2017-7418	2.1	https://vulners.com/cve/CVE-2017-7418
+    	CVE-2012-6095	1.2	https://vulners.com/cve/CVE-2012-6095</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">3306</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">mysql</td>
+<td title="Product">MySQL</td>
+<td title="Version">5.0.51a-3ubuntu5</td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:mysql:mysql:5.0.51a-3ubuntu5">cpe:/a:mysql:mysql:5.0.51a-3ubuntu5</a><h5>mysql-vuln-cve2012-2122</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">ERROR: Script execution failed (use -d to debug)</pre>
+<h5>vulners</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  cpe:/a:mysql:mysql:5.0.51a-3ubuntu5: 
+    	SSV:19118	8.5	https://vulners.com/seebug/SSV:19118	*EXPLOIT*
+    	CVE-2009-2446	8.5	https://vulners.com/cve/CVE-2009-2446
+    	SAINT:D505D53863BE216621FDAECA22896071	7.5	https://vulners.com/saint/SAINT:D505D53863BE216621FDAECA22896071	*EXPLOIT*
+    	SAINT:A9E0BE0CEF71F1F98D3CB3E95173B3D0	7.5	https://vulners.com/saint/SAINT:A9E0BE0CEF71F1F98D3CB3E95173B3D0	*EXPLOIT*
+    	SAINT:79BA92A57C28E796ADD04A6A8AE158CE	7.5	https://vulners.com/saint/SAINT:79BA92A57C28E796ADD04A6A8AE158CE	*EXPLOIT*
+    	SAINT:3101D21E4D8017EA5B14AF668DC39CAD	7.5	https://vulners.com/saint/SAINT:3101D21E4D8017EA5B14AF668DC39CAD	*EXPLOIT*
+    	PACKETSTORM:85678	7.5	https://vulners.com/packetstorm/PACKETSTORM:85678	*EXPLOIT*
+    	PACKETSTORM:82247	7.5	https://vulners.com/packetstorm/PACKETSTORM:82247	*EXPLOIT*
+    	MSF:EXPLOIT/WINDOWS/MYSQL/MYSQL_YASSL_HELLO	7.5	https://vulners.com/metasploit/MSF:EXPLOIT/WINDOWS/MYSQL/MYSQL_YASSL_HELLO	*EXPLOIT*
+    	MSF:EXPLOIT/LINUX/MYSQL/MYSQL_YASSL_HELLO	7.5	https://vulners.com/metasploit/MSF:EXPLOIT/LINUX/MYSQL/MYSQL_YASSL_HELLO	*EXPLOIT*
+    	CVE-2008-0226	7.5	https://vulners.com/cve/CVE-2008-0226
+    	SSV:15006	6.8	https://vulners.com/seebug/SSV:15006	*EXPLOIT*
+    	CVE-2009-5026	6.8	https://vulners.com/cve/CVE-2009-5026
+    	CVE-2009-4028	6.8	https://vulners.com/cve/CVE-2009-4028
+    	SSV:19606	6.5	https://vulners.com/seebug/SSV:19606	*EXPLOIT*
+    	CVE-2010-1848	6.5	https://vulners.com/cve/CVE-2010-1848
+    	SSV:19608	6.0	https://vulners.com/seebug/SSV:19608	*EXPLOIT*
+    	SSV:15004	6.0	https://vulners.com/seebug/SSV:15004	*EXPLOIT*
+    	CVE-2010-1850	6.0	https://vulners.com/cve/CVE-2010-1850
+    	CVE-2008-7247	6.0	https://vulners.com/cve/CVE-2008-7247
+    	SSV:19607	5.0	https://vulners.com/seebug/SSV:19607	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-RHSA-2011-0164/	5.0	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2011-0164/	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-RHSA-2010-0825/	5.0	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2010-0825/	*EXPLOIT*
+    	CVE-2010-3833	5.0	https://vulners.com/cve/CVE-2010-3833
+    	CVE-2010-1849	5.0	https://vulners.com/cve/CVE-2010-1849
+    	SSV:3280	4.6	https://vulners.com/seebug/SSV:3280	*EXPLOIT*
+    	CVE-2008-4098	4.6	https://vulners.com/cve/CVE-2008-4098
+    	CVE-2008-2079	4.6	https://vulners.com/cve/CVE-2008-2079
+    	SSV:4042	4.0	https://vulners.com/seebug/SSV:4042	*EXPLOIT*
+    	SSV:15090	4.0	https://vulners.com/seebug/SSV:15090	*EXPLOIT*
+    	SSV:15005	4.0	https://vulners.com/seebug/SSV:15005	*EXPLOIT*
+    	CVE-2012-0490	4.0	https://vulners.com/cve/CVE-2012-0490
+    	CVE-2012-0484	4.0	https://vulners.com/cve/CVE-2012-0484
+    	CVE-2012-0102	4.0	https://vulners.com/cve/CVE-2012-0102
+    	CVE-2012-0101	4.0	https://vulners.com/cve/CVE-2012-0101
+    	CVE-2012-0087	4.0	https://vulners.com/cve/CVE-2012-0087
+    	CVE-2010-3838	4.0	https://vulners.com/cve/CVE-2010-3838
+    	CVE-2010-3837	4.0	https://vulners.com/cve/CVE-2010-3837
+    	CVE-2010-3836	4.0	https://vulners.com/cve/CVE-2010-3836
+    	CVE-2010-3834	4.0	https://vulners.com/cve/CVE-2010-3834
+    	CVE-2010-3682	4.0	https://vulners.com/cve/CVE-2010-3682
+    	CVE-2010-3677	4.0	https://vulners.com/cve/CVE-2010-3677
+    	CVE-2009-4019	4.0	https://vulners.com/cve/CVE-2009-4019
+    	CVE-2008-3963	4.0	https://vulners.com/cve/CVE-2008-3963
+    	CVE-2010-1626	3.6	https://vulners.com/cve/CVE-2010-1626
+    	CVE-2012-0114	3.0	https://vulners.com/cve/CVE-2012-0114
+    	CVE-2012-0075	1.7	https://vulners.com/cve/CVE-2012-0075</pre>
+<h5>ssl-ccs-injection</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">No reply from server (TIMEOUT)</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">3632</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">distccd</td>
+<td title="Product">distccd</td>
+<td title="Version">v1</td>
+<td title="Extra Info">(GNU) 4.2.4 (Ubuntu 4.2.4-1ubuntu4)</td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a><h5>distcc-cve2004-2687</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  distcc Daemon Command Execution
+    State: VULNERABLE (Exploitable)
+    IDs:  CVE:CVE-2004-2687
+    Risk factor: High  CVSSv2: 9.3 (HIGH) (AV:N/AC:M/Au:N/C:C/I:C/A:C)
+      Allows executing of arbitrary commands on systems running distccd 3.1 and
+      earlier. The vulnerability is the consequence of weak service configuration.
+      
+    Disclosure date: 2002-02-01
+    Extra information:
+      
+    uid=1(daemon) gid=1(daemon) groups=1(daemon)
+  
+    References:
+      https://distcc.github.io/security.html
+      https://nvd.nist.gov/vuln/detail/CVE-2004-2687
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2687
+</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">5432</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">postgresql</td>
+<td title="Product">PostgreSQL DB</td>
+<td title="Version">8.3.0 - 8.3.7</td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:postgresql:postgresql:8.3">cpe:/a:postgresql:postgresql:8.3</a><h5>ssl-ccs-injection</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  SSL/TLS MITM vulnerability (CCS Injection)
+    State: VULNERABLE
+    Risk factor: High
+      OpenSSL before 0.9.8za, 1.0.0 before 1.0.0m, and 1.0.1 before 1.0.1h
+      does not properly restrict processing of ChangeCipherSpec messages,
+      which allows man-in-the-middle attackers to trigger use of a zero
+      length master key in certain OpenSSL-to-OpenSSL communications, and
+      consequently hijack sessions or obtain sensitive information, via
+      a crafted TLS handshake, aka the "CCS Injection" vulnerability.
+          
+    References:
+      http://www.openssl.org/news/secadv_20140605.txt
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0224
+      http://www.cvedetails.com/cve/2014-0224
+</pre>
+<h5>ssl-poodle</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  SSL POODLE information leak
+    State: VULNERABLE
+    IDs:  CVE:CVE-2014-3566  BID:70574
+          The SSL protocol 3.0, as used in OpenSSL through 1.0.1i and other
+          products, uses nondeterministic CBC padding, which makes it easier
+          for man-in-the-middle attackers to obtain cleartext data via a
+          padding-oracle attack, aka the "POODLE" issue.
+    Disclosure date: 2014-10-14
+    Check results:
+      TLS_RSA_WITH_AES_128_CBC_SHA
+    References:
+      https://www.openssl.org/~bodo/ssl-poodle.pdf
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3566
+      https://www.imperialviolet.org/2014/10/14/poodle.html
+      https://www.securityfocus.com/bid/70574
+</pre>
+<h5>vulners</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  cpe:/a:postgresql:postgresql:8.3: 
+    	SSV:60718	10.0	https://vulners.com/seebug/SSV:60718	*EXPLOIT*
+    	CVE-2013-1903	10.0	https://vulners.com/cve/CVE-2013-1903
+    	CVE-2013-1902	10.0	https://vulners.com/cve/CVE-2013-1902
+    	SSV:30015	8.5	https://vulners.com/seebug/SSV:30015	*EXPLOIT*
+    	SSV:19652	8.5	https://vulners.com/seebug/SSV:19652	*EXPLOIT*
+    	POSTGRESQL:CVE-2013-1900	8.5	https://vulners.com/postgresql/POSTGRESQL:CVE-2013-1900
+    	POSTGRESQL:CVE-2010-1169	8.5	https://vulners.com/postgresql/POSTGRESQL:CVE-2010-1169
+    	CVE-2010-1447	8.5	https://vulners.com/cve/CVE-2010-1447
+    	CVE-2010-1169	8.5	https://vulners.com/cve/CVE-2010-1169
+    	MSF:ILITIES/LINUXRPM-RHSA-2012-1047/	7.5	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2012-1047/	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-RHSA-2012-1046/	7.5	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2012-1046/	*EXPLOIT*
+    	SSV:30152	6.8	https://vulners.com/seebug/SSV:30152	*EXPLOIT*
+    	SECURITYVULNS:VULN:10252	6.8	https://vulners.com/securityvulns/SECURITYVULNS:VULN:10252
+    	POSTGRESQL:CVE-2013-0255	6.8	https://vulners.com/postgresql/POSTGRESQL:CVE-2013-0255
+    	POSTGRESQL:CVE-2012-0868	6.8	https://vulners.com/postgresql/POSTGRESQL:CVE-2012-0868
+    	POSTGRESQL:CVE-2009-3231	6.8	https://vulners.com/postgresql/POSTGRESQL:CVE-2009-3231
+    	CVE-2013-0255	6.8	https://vulners.com/cve/CVE-2013-0255
+    	CVE-2012-0868	6.8	https://vulners.com/cve/CVE-2012-0868
+    	CVE-2009-3231	6.8	https://vulners.com/cve/CVE-2009-3231
+    	SSV:62083	6.5	https://vulners.com/seebug/SSV:62083	*EXPLOIT*
+    	SSV:61543	6.5	https://vulners.com/seebug/SSV:61543	*EXPLOIT*
+    	SECURITYVULNS:VULN:10803	6.5	https://vulners.com/securityvulns/SECURITYVULNS:VULN:10803
+    	SECURITYVULNS:VULN:10473	6.5	https://vulners.com/securityvulns/SECURITYVULNS:VULN:10473
+    	POSTGRESQL:CVE-2014-0065	6.5	https://vulners.com/postgresql/POSTGRESQL:CVE-2014-0065
+    	POSTGRESQL:CVE-2014-0064	6.5	https://vulners.com/postgresql/POSTGRESQL:CVE-2014-0064
+    	POSTGRESQL:CVE-2014-0063	6.5	https://vulners.com/postgresql/POSTGRESQL:CVE-2014-0063
+    	POSTGRESQL:CVE-2014-0061	6.5	https://vulners.com/postgresql/POSTGRESQL:CVE-2014-0061
+    	POSTGRESQL:CVE-2012-0866	6.5	https://vulners.com/postgresql/POSTGRESQL:CVE-2012-0866
+    	POSTGRESQL:CVE-2010-4015	6.5	https://vulners.com/postgresql/POSTGRESQL:CVE-2010-4015
+    	POSTGRESQL:CVE-2009-4136	6.5	https://vulners.com/postgresql/POSTGRESQL:CVE-2009-4136
+    	POSTGRESQL:CVE-2009-3230	6.5	https://vulners.com/postgresql/POSTGRESQL:CVE-2009-3230
+    	CVE-2014-0065	6.5	https://vulners.com/cve/CVE-2014-0065
+    	CVE-2014-0064	6.5	https://vulners.com/cve/CVE-2014-0064
+    	CVE-2014-0063	6.5	https://vulners.com/cve/CVE-2014-0063
+    	CVE-2014-0061	6.5	https://vulners.com/cve/CVE-2014-0061
+    	CVE-2012-0866	6.5	https://vulners.com/cve/CVE-2012-0866
+    	CVE-2010-4015	6.5	https://vulners.com/cve/CVE-2010-4015
+    	SECURITYVULNS:VULN:11183	6.0	https://vulners.com/securityvulns/SECURITYVULNS:VULN:11183
+    	POSTGRESQL:CVE-2010-3433	6.0	https://vulners.com/postgresql/POSTGRESQL:CVE-2010-3433
+    	POSTGRESQL:CVE-2010-1170	6.0	https://vulners.com/postgresql/POSTGRESQL:CVE-2010-1170
+    	CVE-2010-3433	6.0	https://vulners.com/cve/CVE-2010-3433
+    	CVE-2010-1170	6.0	https://vulners.com/cve/CVE-2010-1170
+    	POSTGRESQL:CVE-2009-4034	5.8	https://vulners.com/postgresql/POSTGRESQL:CVE-2009-4034
+    	SSV:19669	5.5	https://vulners.com/seebug/SSV:19669	*EXPLOIT*
+    	POSTGRESQL:CVE-2010-1975	5.5	https://vulners.com/postgresql/POSTGRESQL:CVE-2010-1975
+    	CVE-2010-1975	5.5	https://vulners.com/cve/CVE-2010-1975
+    	SSV:61546	4.9	https://vulners.com/seebug/SSV:61546	*EXPLOIT*
+    	SSV:60334	4.9	https://vulners.com/seebug/SSV:60334	*EXPLOIT*
+    	POSTGRESQL:CVE-2014-0062	4.9	https://vulners.com/postgresql/POSTGRESQL:CVE-2014-0062
+    	POSTGRESQL:CVE-2012-3488	4.9	https://vulners.com/postgresql/POSTGRESQL:CVE-2012-3488
+    	MSF:ILITIES/CENTOS_LINUX-CVE-2012-3488/	4.9	https://vulners.com/metasploit/MSF:ILITIES/CENTOS_LINUX-CVE-2012-3488/	*EXPLOIT*
+    	CVE-2014-0062	4.9	https://vulners.com/cve/CVE-2014-0062
+    	CVE-2012-3488	4.9	https://vulners.com/cve/CVE-2012-3488
+    	SSV:61544	4.6	https://vulners.com/seebug/SSV:61544	*EXPLOIT*
+    	CVE-2014-0067	4.6	https://vulners.com/cve/CVE-2014-0067
+    	POSTGRESQL:CVE-2012-2143	4.3	https://vulners.com/postgresql/POSTGRESQL:CVE-2012-2143
+    	POSTGRESQL:CVE-2012-0867	4.3	https://vulners.com/postgresql/POSTGRESQL:CVE-2012-0867
+    	CVE-2012-2143	4.3	https://vulners.com/cve/CVE-2012-2143
+    	SSV:61547	4.0	https://vulners.com/seebug/SSV:61547	*EXPLOIT*
+    	SSV:61545	4.0	https://vulners.com/seebug/SSV:61545	*EXPLOIT*
+    	SSV:60335	4.0	https://vulners.com/seebug/SSV:60335	*EXPLOIT*
+    	SSV:60186	4.0	https://vulners.com/seebug/SSV:60186	*EXPLOIT*
+    	SECURITYVULNS:VULN:9765	4.0	https://vulners.com/securityvulns/SECURITYVULNS:VULN:9765
+    	POSTGRESQL:CVE-2014-0066	4.0	https://vulners.com/postgresql/POSTGRESQL:CVE-2014-0066
+    	POSTGRESQL:CVE-2014-0060	4.0	https://vulners.com/postgresql/POSTGRESQL:CVE-2014-0060
+    	POSTGRESQL:CVE-2012-3489	4.0	https://vulners.com/postgresql/POSTGRESQL:CVE-2012-3489
+    	POSTGRESQL:CVE-2012-2655	4.0	https://vulners.com/postgresql/POSTGRESQL:CVE-2012-2655
+    	POSTGRESQL:CVE-2009-3229	4.0	https://vulners.com/postgresql/POSTGRESQL:CVE-2009-3229
+    	POSTGRESQL:CVE-2009-0922	4.0	https://vulners.com/postgresql/POSTGRESQL:CVE-2009-0922
+    	CVE-2014-0066	4.0	https://vulners.com/cve/CVE-2014-0066
+    	CVE-2014-0060	4.0	https://vulners.com/cve/CVE-2014-0060
+    	CVE-2012-3489	4.0	https://vulners.com/cve/CVE-2012-3489
+    	CVE-2012-2655	4.0	https://vulners.com/cve/CVE-2012-2655
+    	CVE-2009-3229	4.0	https://vulners.com/cve/CVE-2009-3229
+    	SSV:19322	3.5	https://vulners.com/seebug/SSV:19322	*EXPLOIT*
+    	PACKETSTORM:127092	3.5	https://vulners.com/packetstorm/PACKETSTORM:127092	*EXPLOIT*
+    	CVE-2010-0733	3.5	https://vulners.com/cve/CVE-2010-0733
+    	MSF:AUXILIARY/ADMIN/POSTGRES/POSTGRES_SQL	0.0	https://vulners.com/metasploit/MSF:AUXILIARY/ADMIN/POSTGRES/POSTGRES_SQL	*EXPLOIT*</pre>
+<h5>ssl-dh-params</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  Diffie-Hellman Key Exchange Insufficient Group Strength
+    State: VULNERABLE
+      Transport Layer Security (TLS) services that use Diffie-Hellman groups
+      of insufficient strength, especially those using one of a few commonly
+      shared groups, may be susceptible to passive eavesdropping attacks.
+    Check results:
+      WEAK DH GROUP 1
+            Cipher Suite: TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA
+            Modulus Type: Safe prime
+            Modulus Source: Unknown/Custom-generated
+            Modulus Length: 1024
+            Generator Length: 8
+            Public Key Length: 1024
+    References:
+      https://weakdh.org
+</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">5900</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">vnc</td>
+<td title="Product">VNC</td>
+<td title="Version"></td>
+<td title="Extra Info">protocol 3.3</td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">6000</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">X11</td>
+<td title="Product"></td>
+<td title="Version"></td>
+<td title="Extra Info">access denied</td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">6667</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">irc</td>
+<td title="Product">UnrealIRCd</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:unrealircd:unrealircd">cpe:/a:unrealircd:unrealircd</a><h5>irc-botnet-channels</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  ERROR: Closing Link: [10.5.1.4] (Throttled: Reconnecting too fast) -Email admin@Metasploitable.LAN for more information.
+</pre>
+<h5>irc-unrealircd-backdoor</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Looks like trojaned version of unrealircd. See http://seclists.org/fulldisclosure/2010/Jun/277</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">6697</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">irc</td>
+<td title="Product">UnrealIRCd</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:unrealircd:unrealircd">cpe:/a:unrealircd:unrealircd</a><h5>ssl-ccs-injection</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">No reply from server (TIMEOUT)</pre>
+<h5>irc-botnet-channels</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  ERROR: Closing Link: [10.5.1.4] (Throttled: Reconnecting too fast) -Email admin@Metasploitable.LAN for more information.
+</pre>
+<h5>irc-unrealircd-backdoor</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Looks like trojaned version of unrealircd. See http://seclists.org/fulldisclosure/2010/Jun/277</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">8009</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">ajp13</td>
+<td title="Product">Apache Jserv</td>
+<td title="Version"></td>
+<td title="Extra Info">Protocol v1.3</td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">8180</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">http</td>
+<td title="Product">Apache Tomcat/Coyote JSP engine</td>
+<td title="Version">1.1</td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:apache:coyote_http_connector:1.1">cpe:/a:apache:coyote_http_connector:1.1</a><h5>http-server-header</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Apache-Coyote/1.1</pre>
+<h5>http-enum</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  /admin/: Possible admin folder
+  /admin/index.html: Possible admin folder
+  /admin/login.html: Possible admin folder
+  /admin/admin.html: Possible admin folder
+  /admin/account.html: Possible admin folder
+  /admin/admin_login.html: Possible admin folder
+  /admin/home.html: Possible admin folder
+  /admin/admin-login.html: Possible admin folder
+  /admin/adminLogin.html: Possible admin folder
+  /admin/controlpanel.html: Possible admin folder
+  /admin/cp.html: Possible admin folder
+  /admin/index.jsp: Possible admin folder
+  /admin/login.jsp: Possible admin folder
+  /admin/admin.jsp: Possible admin folder
+  /admin/home.jsp: Possible admin folder
+  /admin/controlpanel.jsp: Possible admin folder
+  /admin/admin-login.jsp: Possible admin folder
+  /admin/cp.jsp: Possible admin folder
+  /admin/account.jsp: Possible admin folder
+  /admin/admin_login.jsp: Possible admin folder
+  /admin/adminLogin.jsp: Possible admin folder
+  /manager/html/upload: Apache Tomcat (401 Unauthorized)
+  /manager/html: Apache Tomcat (401 Unauthorized)
+  /admin/view/javascript/fckeditor/editor/filemanager/connectors/test.html: OpenCart/FCKeditor File upload
+  /admin/includes/FCKeditor/editor/filemanager/upload/test.html: ASP Simple Blog / FCKeditor File Upload
+  /admin/jscript/upload.html: Lizard Cart/Remote File upload
+  /webdav/: Potentially interesting folder
+</pre>
+<h5>http-cookie-flags</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  /admin/: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/index.html: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/login.html: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/admin.html: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/account.html: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/admin_login.html: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/home.html: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/admin-login.html: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/adminLogin.html: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/controlpanel.html: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/cp.html: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/index.jsp: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/login.jsp: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/admin.jsp: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/home.jsp: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/controlpanel.jsp: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/admin-login.jsp: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/cp.jsp: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/account.jsp: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/admin_login.jsp: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/adminLogin.jsp: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/view/javascript/fckeditor/editor/filemanager/connectors/test.html: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/includes/FCKeditor/editor/filemanager/upload/test.html: 
+    JSESSIONID: 
+      httponly flag not set
+  /admin/jscript/upload.html: 
+    JSESSIONID: 
+      httponly flag not set</pre>
+<h5>http-slowloris-check</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  Slowloris DOS attack
+    State: LIKELY VULNERABLE
+    IDs:  CVE:CVE-2007-6750
+      Slowloris tries to keep many connections to the target web server open and hold
+      them open as long as possible.  It accomplishes this by opening connections to
+      the target web server and sending a partial request. By doing so, it starves
+      the http server's resources causing Denial Of Service.
+      
+    Disclosure date: 2009-09-17
+    References:
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+      http://ha.ckers.org/slowloris/
+</pre>
+<h5>http-stored-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any stored XSS vulnerabilities.</pre>
+<h5>http-dombased-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any DOM based XSS.</pre>
+<h5>http-csrf</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=10.5.1.18
+  Found the following possible CSRF vulnerabilities: 
+    
+    Path: http://10.5.1.18:8180/admin/
+    Form id: username
+    Form action: j_security_check;jsessionid=395D62917B1B2B48FCFBD9F878EBBD73
+    
+    Path: http://10.5.1.18:8180/admin/login.jsp
+    Form id: username
+    Form action: j_security_check;jsessionid=1173E4C02E354AD50D30373D375561BD
+    
+    Path: http://10.5.1.18:8180/jsp-examples/sessions/carts.html
+    Form id: 
+    Form action: carts.jsp
+</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">8787</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">drb</td>
+<td title="Product">Ruby DRb RMI</td>
+<td title="Version"></td>
+<td title="Extra Info">Ruby 1.8; path /usr/lib/ruby/1.8/drb</td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:ruby-lang:ruby:1.8">cpe:/a:ruby-lang:ruby:1.8</a></td></tr>
+<tr class="success">
+<td title="Port">38933</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">nlockmgr</td>
+<td title="Product"></td>
+<td title="Version">1-4</td>
+<td title="Extra Info">RPC #100021</td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">44132</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">mountd</td>
+<td title="Product"></td>
+<td title="Version">1-3</td>
+<td title="Extra Info">RPC #100005</td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">45563</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">status</td>
+<td title="Product"></td>
+<td title="Version">1</td>
+<td title="Extra Info">RPC #100024</td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">50999</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">java-rmi</td>
+<td title="Product">GNU Classpath grmiregistry</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a><h5>rmi-vuln-classloader</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  RMI registry default configuration remote code execution vulnerability
+    State: VULNERABLE
+      Default configuration of RMI registry allows loading classes from remote URLs which can lead to remote code execution.
+      
+    References:
+      https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/multi/misc/java_rmi_server.rb
+</pre>
+</td></tr>
+</tbody>
+</table></div>
+<h4>Host Script</h4>
+<h5>smb-vuln-regsvc-dos</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">ERROR: Script execution failed (use -d to debug)</pre>
+<h5>smb-vuln-ms10-054</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">false</pre>
+<h5>smb-vuln-ms10-061</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">false</pre>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading clickable" data-toggle="collapse" data-target="#10-5-1-20"><h3 class="panel-title">10.5.1.20</h3></div>
+<div class="panel-body collapse in" id="10-5-1-20">
+<h4>Puertos</h4>
+<div class="table-responsive"><table class="table table-bordered">
+<thead><tr>
+<th>Puerto</th>
+<th>Protocolo</th>
+<th>Estado<br>Razón</th>
+<th>Servicio</th>
+<th>Producto</th>
+<th>Versión</th>
+<th>Información Extra</th>
+</tr></thead>
+<tbody>
+<tr class="success">
+<td title="Port">21</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">ftp</td>
+<td title="Product">Microsoft ftpd</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:microsoft:ftp_service">cpe:/a:microsoft:ftp_service</a></td></tr>
+<tr class="success">
+<td title="Port">22</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">ssh</td>
+<td title="Product">OpenSSH</td>
+<td title="Version">7.1</td>
+<td title="Extra Info">protocol 2.0</td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:openbsd:openssh:7.1">cpe:/a:openbsd:openssh:7.1</a><h5>vulners</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  cpe:/a:openbsd:openssh:7.1: 
+    	PACKETSTORM:140070	7.8	https://vulners.com/packetstorm/PACKETSTORM:140070	*EXPLOIT*
+    	EXPLOITPACK:5BCA798C6BA71FAE29334297EC0B6A09	7.8	https://vulners.com/exploitpack/EXPLOITPACK:5BCA798C6BA71FAE29334297EC0B6A09	*EXPLOIT*
+    	EDB-ID:40888	7.8	https://vulners.com/exploitdb/EDB-ID:40888	*EXPLOIT*
+    	CVE-2016-8858	7.8	https://vulners.com/cve/CVE-2016-8858
+    	CVE-2016-6515	7.8	https://vulners.com/cve/CVE-2016-6515
+    	1337DAY-ID-26494	7.8	https://vulners.com/zdt/1337DAY-ID-26494	*EXPLOIT*
+    	SSV:92579	7.5	https://vulners.com/seebug/SSV:92579	*EXPLOIT*
+    	CVE-2016-1908	7.5	https://vulners.com/cve/CVE-2016-1908
+    	CVE-2016-10009	7.5	https://vulners.com/cve/CVE-2016-10009
+    	1337DAY-ID-26576	7.5	https://vulners.com/zdt/1337DAY-ID-26576	*EXPLOIT*
+    	SSV:92582	7.2	https://vulners.com/seebug/SSV:92582	*EXPLOIT*
+    	CVE-2016-10012	7.2	https://vulners.com/cve/CVE-2016-10012
+    	CVE-2015-8325	7.2	https://vulners.com/cve/CVE-2015-8325
+    	SSV:92580	6.9	https://vulners.com/seebug/SSV:92580	*EXPLOIT*
+    	CVE-2016-10010	6.9	https://vulners.com/cve/CVE-2016-10010
+    	1337DAY-ID-26577	6.9	https://vulners.com/zdt/1337DAY-ID-26577	*EXPLOIT*
+    	MSF:ILITIES/UBUNTU-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/UBUNTU-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/SUSE-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/SUSE-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/SUSE-CVE-2019-25017/	5.8	https://vulners.com/metasploit/MSF:ILITIES/SUSE-CVE-2019-25017/	*EXPLOIT*
+    	MSF:ILITIES/REDHAT_LINUX-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/REDHAT_LINUX-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/REDHAT-OPENSHIFT-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/REDHAT-OPENSHIFT-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/ORACLE-SOLARIS-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/ORACLE-SOLARIS-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/OPENBSD-OPENSSH-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/OPENBSD-OPENSSH-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/IBM-AIX-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/IBM-AIX-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP8-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP8-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP5-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP5-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP3-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP3-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/GENTOO-LINUX-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/GENTOO-LINUX-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/F5-BIG-IP-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/F5-BIG-IP-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/DEBIAN-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/DEBIAN-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/CENTOS_LINUX-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/CENTOS_LINUX-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/AMAZON_LINUX-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/AMAZON_LINUX-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/AMAZON-LINUX-AMI-2-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/AMAZON-LINUX-AMI-2-CVE-2019-6111/	*EXPLOIT*
+    	MSF:ILITIES/ALPINE-LINUX-CVE-2019-6111/	5.8	https://vulners.com/metasploit/MSF:ILITIES/ALPINE-LINUX-CVE-2019-6111/	*EXPLOIT*
+    	EXPLOITPACK:98FE96309F9524B8C84C508837551A19	5.8	https://vulners.com/exploitpack/EXPLOITPACK:98FE96309F9524B8C84C508837551A19	*EXPLOIT*
+    	EXPLOITPACK:5330EA02EBDE345BFC9D6DDDD97F9E97	5.8	https://vulners.com/exploitpack/EXPLOITPACK:5330EA02EBDE345BFC9D6DDDD97F9E97	*EXPLOIT*
+    	EDB-ID:46516	5.8	https://vulners.com/exploitdb/EDB-ID:46516	*EXPLOIT*
+    	EDB-ID:46193	5.8	https://vulners.com/exploitdb/EDB-ID:46193	*EXPLOIT*
+    	CVE-2019-6111	5.8	https://vulners.com/cve/CVE-2019-6111
+    	1337DAY-ID-32328	5.8	https://vulners.com/zdt/1337DAY-ID-32328	*EXPLOIT*
+    	1337DAY-ID-32009	5.8	https://vulners.com/zdt/1337DAY-ID-32009	*EXPLOIT*
+    	SSV:91041	5.5	https://vulners.com/seebug/SSV:91041	*EXPLOIT*
+    	PACKETSTORM:140019	5.5	https://vulners.com/packetstorm/PACKETSTORM:140019	*EXPLOIT*
+    	PACKETSTORM:136234	5.5	https://vulners.com/packetstorm/PACKETSTORM:136234	*EXPLOIT*
+    	EXPLOITPACK:F92411A645D85F05BDBD274FD222226F	5.5	https://vulners.com/exploitpack/EXPLOITPACK:F92411A645D85F05BDBD274FD222226F	*EXPLOIT*
+    	EXPLOITPACK:9F2E746846C3C623A27A441281EAD138	5.5	https://vulners.com/exploitpack/EXPLOITPACK:9F2E746846C3C623A27A441281EAD138	*EXPLOIT*
+    	EXPLOITPACK:1902C998CBF9154396911926B4C3B330	5.5	https://vulners.com/exploitpack/EXPLOITPACK:1902C998CBF9154396911926B4C3B330	*EXPLOIT*
+    	EDB-ID:40858	5.5	https://vulners.com/exploitdb/EDB-ID:40858	*EXPLOIT*
+    	EDB-ID:40119	5.5	https://vulners.com/exploitdb/EDB-ID:40119	*EXPLOIT*
+    	EDB-ID:39569	5.5	https://vulners.com/exploitdb/EDB-ID:39569	*EXPLOIT*
+    	CVE-2016-3115	5.5	https://vulners.com/cve/CVE-2016-3115
+    	SSH_ENUM	5.0	https://vulners.com/canvas/SSH_ENUM	*EXPLOIT*
+    	PACKETSTORM:150621	5.0	https://vulners.com/packetstorm/PACKETSTORM:150621	*EXPLOIT*
+    	MSF:AUXILIARY/SCANNER/SSH/SSH_ENUMUSERS	5.0	https://vulners.com/metasploit/MSF:AUXILIARY/SCANNER/SSH/SSH_ENUMUSERS	*EXPLOIT*
+    	EXPLOITPACK:F957D7E8A0CC1E23C3C649B764E13FB0	5.0	https://vulners.com/exploitpack/EXPLOITPACK:F957D7E8A0CC1E23C3C649B764E13FB0	*EXPLOIT*
+    	EXPLOITPACK:EBDBC5685E3276D648B4D14B75563283	5.0	https://vulners.com/exploitpack/EXPLOITPACK:EBDBC5685E3276D648B4D14B75563283	*EXPLOIT*
+    	EDB-ID:45939	5.0	https://vulners.com/exploitdb/EDB-ID:45939	*EXPLOIT*
+    	EDB-ID:45233	5.0	https://vulners.com/exploitdb/EDB-ID:45233	*EXPLOIT*
+    	CVE-2018-15919	5.0	https://vulners.com/cve/CVE-2018-15919
+    	CVE-2018-15473	5.0	https://vulners.com/cve/CVE-2018-15473
+    	CVE-2017-15906	5.0	https://vulners.com/cve/CVE-2017-15906
+    	CVE-2016-1907	5.0	https://vulners.com/cve/CVE-2016-1907
+    	CVE-2016-10708	5.0	https://vulners.com/cve/CVE-2016-10708
+    	1337DAY-ID-31730	5.0	https://vulners.com/zdt/1337DAY-ID-31730	*EXPLOIT*
+    	SSV:90447	4.6	https://vulners.com/seebug/SSV:90447	*EXPLOIT*
+    	CVE-2016-0778	4.6	https://vulners.com/cve/CVE-2016-0778
+    	CVE-2021-41617	4.4	https://vulners.com/cve/CVE-2021-41617
+    	MSF:ILITIES/OPENBSD-OPENSSH-CVE-2020-14145/	4.3	https://vulners.com/metasploit/MSF:ILITIES/OPENBSD-OPENSSH-CVE-2020-14145/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP9-CVE-2020-14145/	4.3	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP9-CVE-2020-14145/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP8-CVE-2020-14145/	4.3	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP8-CVE-2020-14145/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP5-CVE-2020-14145/	4.3	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP5-CVE-2020-14145/	*EXPLOIT*
+    	MSF:ILITIES/F5-BIG-IP-CVE-2020-14145/	4.3	https://vulners.com/metasploit/MSF:ILITIES/F5-BIG-IP-CVE-2020-14145/	*EXPLOIT*
+    	EXPLOITPACK:802AF3229492E147A5F09C7F2B27C6DF	4.3	https://vulners.com/exploitpack/EXPLOITPACK:802AF3229492E147A5F09C7F2B27C6DF	*EXPLOIT*
+    	EXPLOITPACK:5652DDAA7FE452E19AC0DC1CD97BA3EF	4.3	https://vulners.com/exploitpack/EXPLOITPACK:5652DDAA7FE452E19AC0DC1CD97BA3EF	*EXPLOIT*
+    	EDB-ID:40136	4.3	https://vulners.com/exploitdb/EDB-ID:40136	*EXPLOIT*
+    	EDB-ID:40113	4.3	https://vulners.com/exploitdb/EDB-ID:40113	*EXPLOIT*
+    	CVE-2020-14145	4.3	https://vulners.com/cve/CVE-2020-14145
+    	CVE-2016-6210	4.3	https://vulners.com/cve/CVE-2016-6210
+    	1337DAY-ID-25440	4.3	https://vulners.com/zdt/1337DAY-ID-25440	*EXPLOIT*
+    	1337DAY-ID-25438	4.3	https://vulners.com/zdt/1337DAY-ID-25438	*EXPLOIT*
+    	MSF:ILITIES/UBUNTU-CVE-2016-0777/	4.0	https://vulners.com/metasploit/MSF:ILITIES/UBUNTU-CVE-2016-0777/	*EXPLOIT*
+    	MSF:ILITIES/IBM-AIX-CVE-2016-0777/	4.0	https://vulners.com/metasploit/MSF:ILITIES/IBM-AIX-CVE-2016-0777/	*EXPLOIT*
+    	MSF:ILITIES/DEBIAN-CVE-2016-0777/	4.0	https://vulners.com/metasploit/MSF:ILITIES/DEBIAN-CVE-2016-0777/	*EXPLOIT*
+    	MSF:ILITIES/AIX-7.2-OPENSSH_ADVISORY7_CVE-2016-0777/	4.0	https://vulners.com/metasploit/MSF:ILITIES/AIX-7.2-OPENSSH_ADVISORY7_CVE-2016-0777/	*EXPLOIT*
+    	MSF:ILITIES/AIX-7.1-OPENSSH_ADVISORY7_CVE-2016-0777/	4.0	https://vulners.com/metasploit/MSF:ILITIES/AIX-7.1-OPENSSH_ADVISORY7_CVE-2016-0777/	*EXPLOIT*
+    	MSF:ILITIES/AIX-5.3-OPENSSH_ADVISORY7_CVE-2016-0777/	4.0	https://vulners.com/metasploit/MSF:ILITIES/AIX-5.3-OPENSSH_ADVISORY7_CVE-2016-0777/	*EXPLOIT*
+    	CVE-2019-6110	4.0	https://vulners.com/cve/CVE-2019-6110
+    	CVE-2019-6109	4.0	https://vulners.com/cve/CVE-2019-6109
+    	CVE-2016-0777	4.0	https://vulners.com/cve/CVE-2016-0777
+    	CVE-2018-20685	2.6	https://vulners.com/cve/CVE-2018-20685
+    	SSV:92581	2.1	https://vulners.com/seebug/SSV:92581	*EXPLOIT*
+    	CVE-2016-10011	2.1	https://vulners.com/cve/CVE-2016-10011
+    	PACKETSTORM:151227	0.0	https://vulners.com/packetstorm/PACKETSTORM:151227	*EXPLOIT*
+    	PACKETSTORM:140261	0.0	https://vulners.com/packetstorm/PACKETSTORM:140261	*EXPLOIT*
+    	PACKETSTORM:138006	0.0	https://vulners.com/packetstorm/PACKETSTORM:138006	*EXPLOIT*
+    	PACKETSTORM:137942	0.0	https://vulners.com/packetstorm/PACKETSTORM:137942	*EXPLOIT*
+    	1337DAY-ID-30937	0.0	https://vulners.com/zdt/1337DAY-ID-30937	*EXPLOIT*</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">80</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">http</td>
+<td title="Product">Microsoft IIS httpd</td>
+<td title="Version">7.5</td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:microsoft:internet_information_server:7.5">cpe:/a:microsoft:internet_information_server:7.5</a><h5>http-dombased-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any DOM based XSS.</pre>
+<h5>http-csrf</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any CSRF vulnerabilities.</pre>
+<h5>http-stored-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any stored XSS vulnerabilities.</pre>
+<h5>http-slowloris-check</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  Slowloris DOS attack
+    State: LIKELY VULNERABLE
+    IDs:  CVE:CVE-2007-6750
+      Slowloris tries to keep many connections to the target web server open and hold
+      them open as long as possible.  It accomplishes this by opening connections to
+      the target web server and sending a partial request. By doing so, it starves
+      the http server's resources causing Denial Of Service.
+      
+    Disclosure date: 2009-09-17
+    References:
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+      http://ha.ckers.org/slowloris/
+</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">135</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">msrpc</td>
+<td title="Product">Microsoft Windows RPC</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">139</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">netbios-ssn</td>
+<td title="Product">Microsoft Windows netbios-ssn</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">445</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">microsoft-ds</td>
+<td title="Product">Microsoft Windows Server 2008 R2 - 2012 microsoft-ds</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">1617</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">java-rmi</td>
+<td title="Product">Java RMI</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">3306</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">mysql</td>
+<td title="Product">MySQL</td>
+<td title="Version">5.5.20-log</td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:mysql:mysql:5.5.20-log">cpe:/a:mysql:mysql:5.5.20-log</a><h5>ssl-ccs-injection</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">ERROR: Script execution failed (use -d to debug)</pre>
+<h5>ssl-heartbleed</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">ERROR: Script execution failed (use -d to debug)</pre>
+<h5>tls-ticketbleed</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">ERROR: Script execution failed (use -d to debug)</pre>
+<h5>ssl-dh-params</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">ERROR: Script execution failed (use -d to debug)</pre>
+<h5>vulners</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  cpe:/a:mysql:mysql:5.5.20-log: 
+    	NODEJS:602	0.0	https://vulners.com/nodejs/NODEJS:602</pre>
+<h5>ssl-poodle</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">ERROR: Script execution failed (use -d to debug)</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">3389</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">ms-wbt-server</td>
+<td title="Product">Microsoft Terminal Service</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a><h5>rdp-vuln-ms12-020</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  MS12-020 Remote Desktop Protocol Denial Of Service Vulnerability
+    State: VULNERABLE
+    IDs:  CVE:CVE-2012-0152
+    Risk factor: Medium  CVSSv2: 4.3 (MEDIUM) (AV:N/AC:M/Au:N/C:N/I:N/A:P)
+          Remote Desktop Protocol vulnerability that could allow remote attackers to cause a denial of service.
+          
+    Disclosure date: 2012-03-13
+    References:
+      http://technet.microsoft.com/en-us/security/bulletin/ms12-020
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0152
+  
+  MS12-020 Remote Desktop Protocol Remote Code Execution Vulnerability
+    State: VULNERABLE
+    IDs:  CVE:CVE-2012-0002
+    Risk factor: High  CVSSv2: 9.3 (HIGH) (AV:N/AC:M/Au:N/C:C/I:C/A:C)
+          Remote Desktop Protocol vulnerability that could allow remote attackers to execute arbitrary code on the targeted system.
+          
+    Disclosure date: 2012-03-13
+    References:
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0002
+      http://technet.microsoft.com/en-us/security/bulletin/ms12-020
+</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">3700</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">giop</td>
+<td title="Product">CORBA naming service</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">3820</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">giop</td>
+<td title="Product">CORBA naming service</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">3920</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">exasoftport1</td>
+<td title="Product"></td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">4848</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">http</td>
+<td title="Product">Oracle GlassFish</td>
+<td title="Version">4.0</td>
+<td title="Extra Info">Servlet 3.1; JSP 2.3; Java 1.8</td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:oracle:jsp:2.3">cpe:/a:oracle:jsp:2.3</a><h5>http-slowloris-check</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  Slowloris DOS attack
+    State: LIKELY VULNERABLE
+    IDs:  CVE:CVE-2007-6750
+      Slowloris tries to keep many connections to the target web server open and hold
+      them open as long as possible.  It accomplishes this by opening connections to
+      the target web server and sending a partial request. By doing so, it starves
+      the http server's resources causing Denial Of Service.
+      
+    Disclosure date: 2009-09-17
+    References:
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+      http://ha.ckers.org/slowloris/
+</pre>
+<h5>http-majordomo2-dir-traversal</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">ERROR: Script execution failed (use -d to debug)</pre>
+<h5>http-stored-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any stored XSS vulnerabilities.</pre>
+<h5>http-phpmyadmin-dir-traversal</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  phpMyAdmin grab_globals.lib.php subform Parameter Traversal Local File Inclusion
+    State: UNKNOWN (unable to test)
+    IDs:  CVE:CVE-2005-3299
+      PHP file inclusion vulnerability in grab_globals.lib.php in phpMyAdmin 2.6.4 and 2.6.4-pl1 allows remote attackers to include local files via the $__redirect parameter, possibly involving the subform array.
+      
+    Disclosure date: 2005-10-nil
+    Extra information:
+      ../../../../../etc/passwd :
+  
+  &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+  &lt;html&gt;
+  &lt;head&gt;
+      &lt;title&gt;Login&lt;/title&gt;
+  &lt;script type="text/javascript"&gt;
+  &lt;!-- FIXME: add code to ensure we're the top-most frame --&gt;
+      if (document.getElementById('layout-doc') != null) {
+          // Just refresh the page... login will take over
+          window.location = window.location;
+      }
+  &lt;/script&gt;
+      &lt;style type="text/css"&gt;
+          /* clickjacking defense */
+          body { display : none; }
+      &lt;/style&gt;
+  &lt;link rel="stylesheet" type="text/css" href="/theme/com/sun/webui/jsf/suntheme/css/css_master.css" /&gt;
+  &lt;script type="text/javascript"&gt;
+  djConfig={
+      "isDebug": false,
+      "debugAtAllCosts": false,
+      "parseWidgets": false
+  };
+  &lt;/script&gt;
+  &lt;script type="text/javascript" src="/theme/META-INF/dojo/dojo.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="/theme/META-INF/json/json.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="/theme/META-INF/prototype/prototype.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="/theme/META-INF/com_sun_faces_ajax.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript"&gt;
+  dojo.hostenv.setModulePrefix("webui.suntheme", "/theme/com/sun/webui/jsf/suntheme/javascript");
+  dojo.require('webui.suntheme.*');
+  &lt;/script&gt;
+  &lt;link id="sun_link5" rel="stylesheet" type="text/css" href="/resource/css/css_ns6up.css" /&gt;
+  
+  &lt;/head&gt;
+  
+  &lt;body id="body3" class="LogBdy" focus="loginform.j_username" style="background-color: #FFFFFF;"&gt;
+      &lt;div id="header"class="LogTopBnd" style="background: url('/theme/com/sun/webui/jsf/suntheme/images/login/gradlogtop.jpg') repeat-x; height: 30px;"&gt;&lt;/div&gt;
+      &lt;div class="middle" style="background-image: url(/theme/com/sun/webui/jsf/suntheme/images/login/gradlogsides.jpg);background-repeat:repeat-x;background-position:left top; background-color: #D4DCE1;"&gt;
+          &lt;div class="plugincontent" style="width1: 1px; visibility: visible;"&gt;
+  
+  &lt;div style="height: 435px;background-image: url(/resource/community-theme/images/login-backimage-open.png);
+      background-repeat:no-repeat;background-position:left top; width: 720px; margin: auto;"&gt;
+      &lt;div style="width: 460px; padding-top: 160px; margin-left: 310px;"&gt;
+  &lt;img id="sun_image11" src="/resource/community-theme/images/login-product_name_open.png;jsessionid=965e88dc809eef5ea0ffe6282617" alt="GlassFish Server Open Source Edition" height="42" width="329" border="0" /&gt;
+          &lt;form method="POST" class="form" name="loginform" action="j_security_check"&gt;
+          &lt;table role="presentation"&gt;
+          &lt;tr&gt;
+              &lt;td&gt;&lt;label for="Login.username" style="font-weight: bold;"&gt;User Name:&lt;/label&gt;&lt;/td&gt;
+              &lt;td&gt;&lt;input type="text" name="j_username" id="Login.username" tabindex="1" value=""&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+              &lt;td&gt;&lt;label for="Login.password" style="font-weight: bold;"&gt;Password:&lt;/label&gt;
+              &lt;td&gt;&lt;input type="password" name="j_password" id="Login.password" tabindex="2"&gt;
+          &lt;tr&gt;
+              &lt;td colspan="2" align="center"&gt;
+                  &lt;input type="submit" class="Btn1"
+                      value="Login"
+                      title="Log In to GlassFish Administration Console" tabindex="3"
+                      onmouseover="javascript: if (this.disabled==0) this.className='Btn1Hov'"
+                      onmouseout="javascript: if (this.disabled==0) this.className='Btn1'"
+                      onblur="javascript: if (this.disabled==0) this.className='Btn1'"
+                      onfocus="javascript: if (this.disabled==0) this.className='Btn1Hov'"
+                      name="loginButton" id="loginButton"&gt;
+          	    &lt;input type="hidden" name="loginButton.DisabledHiddenField" value="true" /&gt;
+      	    &lt;/td&gt;
+  	    &lt;/tr&gt;
+  	    &lt;/table&gt;
+          &lt;/form&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+  
+              &lt;script type="text/javascript"&gt;
+                  if (false) {
+                      //submitAndDisable(document.getElementById('loginButton'), 'Login');
+                      document.getElementById('loginButton').form.submit();
+                      //document.getElementById('loginButton').form.autocomplete="off";
+                  }
+              &lt;/script&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="footer"
+          style="background-image: url(/theme/com/sun/webui/jsf/suntheme/images/login/gradlogbot.jpg);background-repeat:repeat-x;background-position:left top; color: #FFFFFF; background-color: #4A5C68"&gt;
+          &lt;div id="copyright" style="width: 720px; margin-left: auto; margin-right: auto; padding: 5px;"&gt;
+              &lt;span&gt;Copyright \xC2\xA9 2005, 2013, Oracle and/or its affiliates. All rights reserved.  Oracle and Java are registered trademarks of Oracle and/or its  affiliates. Other names may be trademarks of their respective owners.&lt;/span&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;script src="/resource/js/cj.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+  &lt;/html&gt;
+  
+    References:
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3299
+      http://www.exploit-db.com/exploits/1244/
+</pre>
+<h5>http-csrf</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=10.5.1.20
+  Found the following possible CSRF vulnerabilities: 
+    
+    Path: https://10.5.1.20:4848/
+    Form id: login.username
+    Form action: j_security_check
+</pre>
+<h5>http-vuln-cve2017-1001000</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">ERROR: Script execution failed (use -d to debug)</pre>
+<h5>http-dombased-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any DOM based XSS.</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">5985</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">http</td>
+<td title="Product">Microsoft HTTPAPI httpd</td>
+<td title="Version">2.0</td>
+<td title="Extra Info">SSDP/UPnP</td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a><h5>http-csrf</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any CSRF vulnerabilities.</pre>
+<h5>http-dombased-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any DOM based XSS.</pre>
+<h5>http-stored-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any stored XSS vulnerabilities.</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">7676</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">java-message-service</td>
+<td title="Product">Java Message Service</td>
+<td title="Version">301</td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">8020</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">http</td>
+<td title="Product">Apache httpd</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:apache:http_server">cpe:/a:apache:http_server</a><h5>http-stored-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any stored XSS vulnerabilities.</pre>
+<h5>http-dombased-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any DOM based XSS.</pre>
+<h5>http-csrf</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any CSRF vulnerabilities.</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">8027</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">papachi-p2p-srv</td>
+<td title="Product"></td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">8080</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">http</td>
+<td title="Product">Oracle GlassFish</td>
+<td title="Version">4.0</td>
+<td title="Extra Info">Servlet 3.1; JSP 2.3; Java 1.8</td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:oracle:jsp:2.3">cpe:/a:oracle:jsp:2.3</a><h5>http-enum</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  /sdk/../../../../../../../etc/vmware/hostd/vmInventory.xml: Possible path traversal in VMWare (CVE-2009-3733)
+  /sdk/%2E%2E/%2E%2E/%2E%2E/%2E%2E/%2E%2E/%2E%2E/%2E%2E/etc/vmware/hostd/vmInventory.xml: Possible path traversal in VMWare (CVE-2009-3733)
+  /../../../../../../../../../../etc/passwd: Possible path traversal in URI
+  /../../../../../../../../../../boot.ini: Possible path traversal in URI
+  ..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f/var/mobile/Library/AddressBook/AddressBook.sqlitedb: Possible iPhone/iPod/iPad generic file sharing app Directory Traversal (iOS)
+</pre>
+<h5>http-slowloris-check</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  Slowloris DOS attack
+    State: LIKELY VULNERABLE
+    IDs:  CVE:CVE-2007-6750
+      Slowloris tries to keep many connections to the target web server open and hold
+      them open as long as possible.  It accomplishes this by opening connections to
+      the target web server and sending a partial request. By doing so, it starves
+      the http server's resources causing Denial Of Service.
+      
+    Disclosure date: 2009-09-17
+    References:
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+      http://ha.ckers.org/slowloris/
+</pre>
+<h5>http-dombased-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any DOM based XSS.</pre>
+<h5>http-stored-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any stored XSS vulnerabilities.</pre>
+<h5>http-csrf</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any CSRF vulnerabilities.</pre>
+<h5>http-litespeed-sourcecode-download</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+Litespeed Web Server Source Code Disclosure (CVE-2010-2333)
+/index.php source code:
+</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">8181</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">http</td>
+<td title="Product">Oracle GlassFish</td>
+<td title="Version">4.0</td>
+<td title="Extra Info">Servlet 3.1; JSP 2.3; Java 1.8</td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:oracle:jsp:2.3">cpe:/a:oracle:jsp:2.3</a><h5>http-csrf</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any CSRF vulnerabilities.</pre>
+<h5>http-litespeed-sourcecode-download</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+Litespeed Web Server Source Code Disclosure (CVE-2010-2333)
+/index.php source code:
+</pre>
+<h5>http-dombased-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any DOM based XSS.</pre>
+<h5>http-stored-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any stored XSS vulnerabilities.</pre>
+<h5>http-slowloris-check</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  Slowloris DOS attack
+    State: LIKELY VULNERABLE
+    IDs:  CVE:CVE-2007-6750
+      Slowloris tries to keep many connections to the target web server open and hold
+      them open as long as possible.  It accomplishes this by opening connections to
+      the target web server and sending a partial request. By doing so, it starves
+      the http server's resources causing Denial Of Service.
+      
+    Disclosure date: 2009-09-17
+    References:
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+      http://ha.ckers.org/slowloris/
+</pre>
+<h5>http-enum</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  /sdk/../../../../../../../etc/vmware/hostd/vmInventory.xml: Possible path traversal in VMWare (CVE-2009-3733)
+  /sdk/%2E%2E/%2E%2E/%2E%2E/%2E%2E/%2E%2E/%2E%2E/%2E%2E/etc/vmware/hostd/vmInventory.xml: Possible path traversal in VMWare (CVE-2009-3733)
+  /../../../../../../../../../../etc/passwd: Possible path traversal in URI
+  /../../../../../../../../../../boot.ini: Possible path traversal in URI
+</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">8383</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">http</td>
+<td title="Product">Apache httpd</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:apache:http_server">cpe:/a:apache:http_server</a><h5>http-dombased-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any DOM based XSS.</pre>
+<h5>http-stored-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any stored XSS vulnerabilities.</pre>
+<h5>http-csrf</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any CSRF vulnerabilities.</pre>
+<h5>http-slowloris-check</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  Slowloris DOS attack
+    State: LIKELY VULNERABLE
+    IDs:  CVE:CVE-2007-6750
+      Slowloris tries to keep many connections to the target web server open and hold
+      them open as long as possible.  It accomplishes this by opening connections to
+      the target web server and sending a partial request. By doing so, it starves
+      the http server's resources causing Denial Of Service.
+      
+    Disclosure date: 2009-09-17
+    References:
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+      http://ha.ckers.org/slowloris/
+</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">8484</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">http</td>
+<td title="Product">Jetty</td>
+<td title="Version">winstone-2.8</td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:mortbay:jetty:winstone-2.8">cpe:/a:mortbay:jetty:winstone-2.8</a><h5>http-csrf</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=10.5.1.20
+  Found the following possible CSRF vulnerabilities: 
+    
+    Path: http://10.5.1.20:8484/
+    Form id: search-box-minwidth
+    Form action: /search/
+    
+    Path: http://10.5.1.20:8484/api/
+    Form id: search-box-minwidth
+    Form action: /api/search/
+    
+    Path: http://10.5.1.20:8484/asynchPeople/
+    Form id: search-box-minwidth
+    Form action: /search/
+    
+    Path: http://10.5.1.20:8484/manage
+    Form id: search-box-minwidth
+    Form action: /search/
+    
+    Path: http://10.5.1.20:8484/manage
+    Form id: 
+    Form action: /administrativeMonitor/hudson.diagnosis.ReverseProxySetupMonitor/act
+    
+    Path: http://10.5.1.20:8484/manage
+    Form id: 
+    Form action: /updateCenter/upgrade
+    
+    Path: http://10.5.1.20:8484/manage
+    Form id: 
+    Form action: /administrativeMonitor/jenkins.diagnostics.SecurityIsOffMonitor/act
+    
+    Path: http://10.5.1.20:8484/view/All/builds
+    Form id: search-box-minwidth
+    Form action: /view/All/search/
+    
+    Path: http://10.5.1.20:8484/search/
+    Form id: search-box-minwidth
+    Form action: /search/
+    
+    Path: http://10.5.1.20:8484/computer/
+    Form id: search-box-minwidth
+    Form action: /computer/search/
+    
+    Path: http://10.5.1.20:8484/computer/
+    Form id: 
+    Form action: updateNow
+    
+    Path: http://10.5.1.20:8484/newJob
+    Form id: search-box-minwidth
+    Form action: /search/
+    
+    Path: http://10.5.1.20:8484/newJob
+    Form id: name
+    Form action: createItem
+    
+    Path: http://10.5.1.20:8484/editDescription
+    Form id: search-box-minwidth
+    Form action: /search/
+    
+    Path: http://10.5.1.20:8484/editDescription
+    Form id: 
+    Form action: submitDescription
+    
+    Path: http://10.5.1.20:8484/view/All/newJob
+    Form id: search-box-minwidth
+    Form action: /view/All/search/
+    
+    Path: http://10.5.1.20:8484/view/All/newJob
+    Form id: name
+    Form action: createItem
+</pre>
+<h5>http-dombased-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any DOM based XSS.</pre>
+<h5>http-enum</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  /log/: Logs
+  /robots.txt: Robots file
+  /install/: Potentially interesting folder
+  /script/: Potentially interesting folder
+  /secured/: Potentially interesting folder (401 Unauthorized)
+  /target/: Potentially interesting folder
+</pre>
+<h5>http-stored-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any stored XSS vulnerabilities.</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">8585</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">http</td>
+<td title="Product">Apache httpd</td>
+<td title="Version">2.2.21</td>
+<td title="Extra Info">(Win64) PHP/5.3.10 DAV/2</td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:apache:http_server:2.2.21">cpe:/a:apache:http_server:2.2.21</a><h5>vulners</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  cpe:/a:apache:http_server:2.2.21: 
+    	SSV:60913	7.5	https://vulners.com/seebug/SSV:60913	*EXPLOIT*
+    	CVE-2017-7679	7.5	https://vulners.com/cve/CVE-2017-7679
+    	CVE-2017-7668	7.5	https://vulners.com/cve/CVE-2017-7668
+    	CVE-2017-3169	7.5	https://vulners.com/cve/CVE-2017-3169
+    	CVE-2017-3167	7.5	https://vulners.com/cve/CVE-2017-3167
+    	CVE-2013-2249	7.5	https://vulners.com/cve/CVE-2013-2249
+    	SSV:60427	6.9	https://vulners.com/seebug/SSV:60427	*EXPLOIT*
+    	SSV:60386	6.9	https://vulners.com/seebug/SSV:60386	*EXPLOIT*
+    	SSV:60069	6.9	https://vulners.com/seebug/SSV:60069	*EXPLOIT*
+    	CVE-2012-0883	6.9	https://vulners.com/cve/CVE-2012-0883
+    	MSF:ILITIES/UBUNTU-CVE-2018-1312/	6.8	https://vulners.com/metasploit/MSF:ILITIES/UBUNTU-CVE-2018-1312/	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-RHSA-2013-1012/	6.8	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2013-1012/	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-RHSA-2013-1011/	6.8	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2013-1011/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP3-CVE-2018-1312/	6.8	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP3-CVE-2018-1312/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2018-1312/	6.8	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2018-1312/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP1-CVE-2018-1312/	6.8	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP1-CVE-2018-1312/	*EXPLOIT*
+    	MSF:ILITIES/CENTOS_LINUX-CVE-2017-17790/	6.8	https://vulners.com/metasploit/MSF:ILITIES/CENTOS_LINUX-CVE-2017-17790/	*EXPLOIT*
+    	MSF:ILITIES/ALPINE-LINUX-CVE-2018-1312/	6.8	https://vulners.com/metasploit/MSF:ILITIES/ALPINE-LINUX-CVE-2018-1312/	*EXPLOIT*
+    	CVE-2018-1312	6.8	https://vulners.com/cve/CVE-2018-1312
+    	CVE-2017-9788	6.4	https://vulners.com/cve/CVE-2017-9788
+    	MSF:ILITIES/LINUXRPM-RHSA-2013-1208/	5.4	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2013-1208/	*EXPLOIT*
+    	MSF:ILITIES/LINUXRPM-RHSA-2013-1207/	5.4	https://vulners.com/metasploit/MSF:ILITIES/LINUXRPM-RHSA-2013-1207/	*EXPLOIT*
+    	SSV:60788	5.1	https://vulners.com/seebug/SSV:60788	*EXPLOIT*
+    	CVE-2013-1862	5.1	https://vulners.com/cve/CVE-2013-1862
+    	SSV:96537	5.0	https://vulners.com/seebug/SSV:96537	*EXPLOIT*
+    	SSV:61874	5.0	https://vulners.com/seebug/SSV:61874	*EXPLOIT*
+    	SSV:20993	5.0	https://vulners.com/seebug/SSV:20993	*EXPLOIT*
+    	SSV:20979	5.0	https://vulners.com/seebug/SSV:20979	*EXPLOIT*
+    	SSV:20969	5.0	https://vulners.com/seebug/SSV:20969	*EXPLOIT*
+    	PACKETSTORM:105672	5.0	https://vulners.com/packetstorm/PACKETSTORM:105672	*EXPLOIT*
+    	PACKETSTORM:105591	5.0	https://vulners.com/packetstorm/PACKETSTORM:105591	*EXPLOIT*
+    	MSF:ILITIES/SUSE-CVE-2014-0231/	5.0	https://vulners.com/metasploit/MSF:ILITIES/SUSE-CVE-2014-0231/	*EXPLOIT*
+    	MSF:AUXILIARY/SCANNER/HTTP/REWRITE_PROXY_BYPASS	5.0	https://vulners.com/metasploit/MSF:AUXILIARY/SCANNER/HTTP/REWRITE_PROXY_BYPASS	*EXPLOIT*
+    	MSF:AUXILIARY/SCANNER/HTTP/APACHE_OPTIONSBLEED	5.0	https://vulners.com/metasploit/MSF:AUXILIARY/SCANNER/HTTP/APACHE_OPTIONSBLEED	*EXPLOIT*
+    	EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D	5.0	https://vulners.com/exploitpack/EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D	*EXPLOIT*
+    	EXPLOITPACK:460143F0ACAE117DD79BD75EDFDA154B	5.0	https://vulners.com/exploitpack/EXPLOITPACK:460143F0ACAE117DD79BD75EDFDA154B	*EXPLOIT*
+    	EDB-ID:42745	5.0	https://vulners.com/exploitdb/EDB-ID:42745	*EXPLOIT*
+    	EDB-ID:17969	5.0	https://vulners.com/exploitdb/EDB-ID:17969	*EXPLOIT*
+    	CVE-2017-9798	5.0	https://vulners.com/cve/CVE-2017-9798
+    	CVE-2014-0231	5.0	https://vulners.com/cve/CVE-2014-0231
+    	CVE-2014-0098	5.0	https://vulners.com/cve/CVE-2014-0098
+    	CVE-2013-6438	5.0	https://vulners.com/cve/CVE-2013-6438
+    	CVE-2012-4557	5.0	https://vulners.com/cve/CVE-2012-4557
+    	CVE-2011-3368	5.0	https://vulners.com/cve/CVE-2011-3368
+    	1337DAY-ID-28573	5.0	https://vulners.com/zdt/1337DAY-ID-28573	*EXPLOIT*
+    	SSV:30024	4.6	https://vulners.com/seebug/SSV:30024	*EXPLOIT*
+    	CVE-2012-0031	4.6	https://vulners.com/cve/CVE-2012-0031
+    	1337DAY-ID-27465	4.6	https://vulners.com/zdt/1337DAY-ID-27465	*EXPLOIT*
+    	SSV:23169	4.4	https://vulners.com/seebug/SSV:23169	*EXPLOIT*
+    	MSF:ILITIES/HPSMH-CVE-2011-4415/	4.4	https://vulners.com/metasploit/MSF:ILITIES/HPSMH-CVE-2011-4415/	*EXPLOIT*
+    	MSF:ILITIES/HPSMH-CVE-2011-3607/	4.4	https://vulners.com/metasploit/MSF:ILITIES/HPSMH-CVE-2011-3607/	*EXPLOIT*
+    	CVE-2011-3607	4.4	https://vulners.com/cve/CVE-2011-3607
+    	1337DAY-ID-27473	4.4	https://vulners.com/zdt/1337DAY-ID-27473	*EXPLOIT*
+    	SSV:60905	4.3	https://vulners.com/seebug/SSV:60905	*EXPLOIT*
+    	SSV:60657	4.3	https://vulners.com/seebug/SSV:60657	*EXPLOIT*
+    	SSV:60653	4.3	https://vulners.com/seebug/SSV:60653	*EXPLOIT*
+    	SSV:60345	4.3	https://vulners.com/seebug/SSV:60345	*EXPLOIT*
+    	SSV:30056	4.3	https://vulners.com/seebug/SSV:30056	*EXPLOIT*
+    	SSV:24250	4.3	https://vulners.com/seebug/SSV:24250	*EXPLOIT*
+    	PACKETSTORM:109284	4.3	https://vulners.com/packetstorm/PACKETSTORM:109284	*EXPLOIT*
+    	MSF:ILITIES/SUSE-CVE-2012-4558/	4.3	https://vulners.com/metasploit/MSF:ILITIES/SUSE-CVE-2012-4558/	*EXPLOIT*
+    	MSF:ILITIES/SUSE-CVE-2012-3499/	4.3	https://vulners.com/metasploit/MSF:ILITIES/SUSE-CVE-2012-3499/	*EXPLOIT*
+    	MSF:ILITIES/ORACLE-SOLARIS-CVE-2012-4558/	4.3	https://vulners.com/metasploit/MSF:ILITIES/ORACLE-SOLARIS-CVE-2012-4558/	*EXPLOIT*
+    	MSF:ILITIES/IBM-HTTP_SERVER-CVE-2012-3499/	4.3	https://vulners.com/metasploit/MSF:ILITIES/IBM-HTTP_SERVER-CVE-2012-3499/	*EXPLOIT*
+    	MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2016-4975/	4.3	https://vulners.com/metasploit/MSF:ILITIES/HUAWEI-EULEROS-2_0_SP2-CVE-2016-4975/	*EXPLOIT*
+    	MSF:ILITIES/HPUX-CVE-2012-4558/	4.3	https://vulners.com/metasploit/MSF:ILITIES/HPUX-CVE-2012-4558/	*EXPLOIT*
+    	MSF:ILITIES/CENTOS_LINUX-CVE-2012-4558/	4.3	https://vulners.com/metasploit/MSF:ILITIES/CENTOS_LINUX-CVE-2012-4558/	*EXPLOIT*
+    	MSF:ILITIES/CENTOS_LINUX-CVE-2012-3499/	4.3	https://vulners.com/metasploit/MSF:ILITIES/CENTOS_LINUX-CVE-2012-3499/	*EXPLOIT*
+    	MSF:ILITIES/APACHE-HTTPD-CVE-2012-4558/	4.3	https://vulners.com/metasploit/MSF:ILITIES/APACHE-HTTPD-CVE-2012-4558/	*EXPLOIT*
+    	MSF:ILITIES/APACHE-HTTPD-CVE-2012-3499/	4.3	https://vulners.com/metasploit/MSF:ILITIES/APACHE-HTTPD-CVE-2012-3499/	*EXPLOIT*
+    	CVE-2016-4975	4.3	https://vulners.com/cve/CVE-2016-4975
+    	CVE-2013-1896	4.3	https://vulners.com/cve/CVE-2013-1896
+    	CVE-2012-4558	4.3	https://vulners.com/cve/CVE-2012-4558
+    	CVE-2012-3499	4.3	https://vulners.com/cve/CVE-2012-3499
+    	CVE-2012-0053	4.3	https://vulners.com/cve/CVE-2012-0053
+    	CVE-2011-4317	4.3	https://vulners.com/cve/CVE-2011-4317
+    	MSF:ILITIES/ORACLE-SOLARIS-CVE-2012-0021/	2.6	https://vulners.com/metasploit/MSF:ILITIES/ORACLE-SOLARIS-CVE-2012-0021/	*EXPLOIT*
+    	CVE-2012-2687	2.6	https://vulners.com/cve/CVE-2012-2687
+    	CVE-2012-0021	2.6	https://vulners.com/cve/CVE-2012-0021
+    	SSV:60250	1.2	https://vulners.com/seebug/SSV:60250	*EXPLOIT*
+    	CVE-2011-4415	1.2	https://vulners.com/cve/CVE-2011-4415</pre>
+<h5>http-enum</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  /wordpress/: Blog
+  /wordpress/wp-login.php: Wordpress login page.
+  /uploads/: Potentially interesting folder w/ directory listing
+</pre>
+<h5>http-trace</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">TRACE is enabled</pre>
+<h5>http-csrf</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any CSRF vulnerabilities.</pre>
+<h5>http-vuln-cve2017-1001000</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">ERROR: Script execution failed (use -d to debug)</pre>
+<h5>http-slowloris-check</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  Slowloris DOS attack
+    State: LIKELY VULNERABLE
+    IDs:  CVE:CVE-2007-6750
+      Slowloris tries to keep many connections to the target web server open and hold
+      them open as long as possible.  It accomplishes this by opening connections to
+      the target web server and sending a partial request. By doing so, it starves
+      the http server's resources causing Denial Of Service.
+      
+    Disclosure date: 2009-09-17
+    References:
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+      http://ha.ckers.org/slowloris/
+</pre>
+<h5>http-stored-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any stored XSS vulnerabilities.</pre>
+<h5>http-sql-injection</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  Possible sqli for queries:
+    http://10.5.1.20:8585/?phpinfo=1%27%20OR%20sqlspider
+</pre>
+<h5>http-dombased-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any DOM based XSS.</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">8686</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">java-rmi</td>
+<td title="Product">Java RMI</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">9200</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">elasticsearch</td>
+<td title="Product">Elastic elasticsearch</td>
+<td title="Version">1.1.1</td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:elasticsearch:elasticsearch:1.1.1">cpe:/a:elasticsearch:elasticsearch:1.1.1</a><h5>fingerprint-strings</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  FourOhFourRequest: 
+    HTTP/1.0 400 Bad Request
+    Content-Type: text/plain; charset=UTF-8
+    Content-Length: 80
+    handler found for uri [/nice%20ports%2C/Tri%6Eity.txt%2ebak] and method [GET]
+  GetRequest: 
+    HTTP/1.0 200 OK
+    Content-Type: application/json; charset=UTF-8
+    Content-Length: 309
+    "status" : 200,
+    "name" : "Ms. Steed",
+    "version" : {
+    "number" : "1.1.1",
+    "build_hash" : "f1585f096d3f3985e73456debdc1a0745f512bbc",
+    "build_timestamp" : "2014-04-16T14:27:12Z",
+    "build_snapshot" : false,
+    "lucene_version" : "4.7"
+    "tagline" : "You Know, for Search"
+  HTTPOptions: 
+    HTTP/1.0 200 OK
+    Content-Type: text/plain; charset=UTF-8
+    Content-Length: 0
+  RTSPRequest, SIPOptions: 
+    HTTP/1.1 200 OK
+    Content-Type: text/plain; charset=UTF-8
+    Content-Length: 0</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">9300</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">vrace</td>
+<td title="Product"></td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">47001</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">http</td>
+<td title="Product">Microsoft HTTPAPI httpd</td>
+<td title="Version">2.0</td>
+<td title="Extra Info">SSDP/UPnP</td>
+</tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a><h5>http-csrf</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any CSRF vulnerabilities.</pre>
+<h5>http-stored-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any stored XSS vulnerabilities.</pre>
+<h5>http-dombased-xss</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">Couldn't find any DOM based XSS.</pre>
+</td></tr>
+<tr class="success">
+<td title="Port">49152</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">msrpc</td>
+<td title="Product">Microsoft Windows RPC</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">49153</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">msrpc</td>
+<td title="Product">Microsoft Windows RPC</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">49154</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">msrpc</td>
+<td title="Product">Microsoft Windows RPC</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">49155</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">msrpc</td>
+<td title="Product">Microsoft Windows RPC</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">49156</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">msrpc</td>
+<td title="Product">Microsoft Windows RPC</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">49158</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">java-rmi</td>
+<td title="Product">Java RMI</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">49159</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">tcpwrapped</td>
+<td title="Product"></td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">49228</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">ssh</td>
+<td title="Product">Apache Mina sshd</td>
+<td title="Version">0.8.0</td>
+<td title="Extra Info">protocol 2.0</td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:apache:sshd:0.8.0">cpe:/a:apache:sshd:0.8.0</a></td></tr>
+<tr class="success">
+<td title="Port">49229</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">jenkins-listener</td>
+<td title="Product">Jenkins TcpSlaveAgentListener</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/a:cloudbees:jenkins">cpe:/a:cloudbees:jenkins</a></td></tr>
+<tr class="success">
+<td title="Port">49316</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">msrpc</td>
+<td title="Product">Microsoft Windows RPC</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version=cpe:/o:microsoft:windows">cpe:/o:microsoft:windows</a></td></tr>
+<tr class="success">
+<td title="Port">49324</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service">java-rmi</td>
+<td title="Product">Java RMI</td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">49328</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service"></td>
+<td title="Product"></td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">49329</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service"></td>
+<td title="Product"></td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr class="success">
+<td title="Port">49330</td>
+<td title="Protocol">tcp</td>
+<td title="State / Reason">open<br>syn-ack</td>
+<td title="Service"></td>
+<td title="Product"></td>
+<td title="Version"></td>
+<td title="Extra Info"></td>
+</tr>
+<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+</tbody>
+</table></div>
+<h4>Host Script</h4>
+<h5>smb-vuln-ms10-054</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">false</pre>
+<h5>smb-vuln-ms10-061</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">NT_STATUS_ACCESS_DENIED</pre>
+<h5>samba-vuln-cve-2012-1182</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">NT_STATUS_ACCESS_DENIED</pre>
+<h5>smb-vuln-ms17-010</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  VULNERABLE:
+  Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
+    State: VULNERABLE
+    IDs:  CVE:CVE-2017-0143
+    Risk factor: HIGH
+      A critical remote code execution vulnerability exists in Microsoft SMBv1
+       servers (ms17-010).
+          
+    Disclosure date: 2017-03-14
+    References:
+      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0143
+      https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+      https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
+</pre>
+</div>
+</div>
+<h2 id="openservices" class="target">Servicios Abiertos</h2>
+<div class="table-responsive"><table id="table-services" class="table table-striped dataTable" role="grid">
+<thead><tr>
+<th>Dirección IP</th>
+<th>Puerto</th>
+<th>Protocolo</th>
+<th>Servicio</th>
+<th>Producto</th>
+<th>Versión</th>
+<th>CPE</th>
+<th>Información Extra</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>10.5.1.12</td>
+<td>21</td>
+<td>tcp</td>
+<td>ftp</td>
+<td>FileZilla ftpd</td>
+<td>0.9.30 beta</td>
+<td>cpe:/a:filezilla-project:filezilla_server:0.9.30_beta</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.12</td>
+<td>22</td>
+<td>tcp</td>
+<td>ssh</td>
+<td>WeOnlyDo sshd</td>
+<td>2.1.8.98</td>
+<td>cpe:/o:microsoft:windows</td>
+<td>protocol 2.0</td>
+</tr>
+<tr>
+<td>10.5.1.12</td>
+<td>31</td>
+<td>tcp</td>
+<td>ftp</td>
+<td>FreeFTPd</td>
+<td>1.0</td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.12</td>
+<td>135</td>
+<td>tcp</td>
+<td>msrpc</td>
+<td>Microsoft Windows RPC</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.12</td>
+<td>139</td>
+<td>tcp</td>
+<td>netbios-ssn</td>
+<td>Microsoft Windows netbios-ssn</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.12</td>
+<td>445</td>
+<td>tcp</td>
+<td>microsoft-ds</td>
+<td>Microsoft Windows 7 - 10 microsoft-ds</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td>workgroup: WORKGROUP</td>
+</tr>
+<tr>
+<td>10.5.1.12</td>
+<td>554</td>
+<td>tcp</td>
+<td>rtsp</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.12</td>
+<td>2869</td>
+<td>tcp</td>
+<td>http</td>
+<td>Microsoft HTTPAPI httpd</td>
+<td>2.0</td>
+<td>cpe:/o:microsoft:windows</td>
+<td>SSDP/UPnP</td>
+</tr>
+<tr>
+<td>10.5.1.12</td>
+<td>5357</td>
+<td>tcp</td>
+<td>http</td>
+<td>Microsoft HTTPAPI httpd</td>
+<td>2.0</td>
+<td>cpe:/o:microsoft:windows</td>
+<td>SSDP/UPnP</td>
+</tr>
+<tr>
+<td>10.5.1.12</td>
+<td>10243</td>
+<td>tcp</td>
+<td>http</td>
+<td>Microsoft HTTPAPI httpd</td>
+<td>2.0</td>
+<td>cpe:/o:microsoft:windows</td>
+<td>SSDP/UPnP</td>
+</tr>
+<tr>
+<td>10.5.1.12</td>
+<td>49152</td>
+<td>tcp</td>
+<td>msrpc</td>
+<td>Microsoft Windows RPC</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.12</td>
+<td>49153</td>
+<td>tcp</td>
+<td>msrpc</td>
+<td>Microsoft Windows RPC</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.12</td>
+<td>49154</td>
+<td>tcp</td>
+<td>msrpc</td>
+<td>Microsoft Windows RPC</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.12</td>
+<td>49155</td>
+<td>tcp</td>
+<td>msrpc</td>
+<td>Microsoft Windows RPC</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.12</td>
+<td>49156</td>
+<td>tcp</td>
+<td>msrpc</td>
+<td>Microsoft Windows RPC</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.12</td>
+<td>49157</td>
+<td>tcp</td>
+<td>msrpc</td>
+<td>Microsoft Windows RPC</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>21</td>
+<td>tcp</td>
+<td>ftp</td>
+<td>vsftpd</td>
+<td>2.3.4</td>
+<td>cpe:/a:vsftpd:vsftpd:2.3.4</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>22</td>
+<td>tcp</td>
+<td>ssh</td>
+<td>OpenSSH</td>
+<td>4.7p1 Debian 8ubuntu1</td>
+<td>cpe:/a:openbsd:openssh:4.7p1</td>
+<td>protocol 2.0</td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>23</td>
+<td>tcp</td>
+<td>telnet</td>
+<td>Linux telnetd</td>
+<td></td>
+<td>cpe:/o:linux:linux_kernel</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>25</td>
+<td>tcp</td>
+<td>smtp</td>
+<td>Postfix smtpd</td>
+<td></td>
+<td>cpe:/a:postfix:postfix</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>53</td>
+<td>tcp</td>
+<td>domain</td>
+<td>ISC BIND</td>
+<td>9.4.2</td>
+<td>cpe:/a:isc:bind:9.4.2</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>80</td>
+<td>tcp</td>
+<td>http</td>
+<td>Apache httpd</td>
+<td>2.2.8</td>
+<td>cpe:/a:apache:http_server:2.2.8</td>
+<td>(Ubuntu) DAV/2</td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>111</td>
+<td>tcp</td>
+<td>rpcbind</td>
+<td></td>
+<td>2</td>
+<td></td>
+<td>RPC #100000</td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>139</td>
+<td>tcp</td>
+<td>netbios-ssn</td>
+<td>Samba smbd</td>
+<td>3.X - 4.X</td>
+<td>cpe:/a:samba:samba</td>
+<td>workgroup: WORKGROUP</td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>445</td>
+<td>tcp</td>
+<td>netbios-ssn</td>
+<td>Samba smbd</td>
+<td>3.X - 4.X</td>
+<td>cpe:/a:samba:samba</td>
+<td>workgroup: WORKGROUP</td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>512</td>
+<td>tcp</td>
+<td>exec</td>
+<td>netkit-rsh rexecd</td>
+<td></td>
+<td>cpe:/a:netkit:netkit</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>513</td>
+<td>tcp</td>
+<td>login</td>
+<td>OpenBSD or Solaris rlogind</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>514</td>
+<td>tcp</td>
+<td>tcpwrapped</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>1099</td>
+<td>tcp</td>
+<td>java-rmi</td>
+<td>GNU Classpath grmiregistry</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>1524</td>
+<td>tcp</td>
+<td>bindshell</td>
+<td>Metasploitable root shell</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>2049</td>
+<td>tcp</td>
+<td>nfs</td>
+<td></td>
+<td>2-4</td>
+<td></td>
+<td>RPC #100003</td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>2121</td>
+<td>tcp</td>
+<td>ftp</td>
+<td>ProFTPD</td>
+<td>1.3.1</td>
+<td>cpe:/a:proftpd:proftpd:1.3.1</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>3306</td>
+<td>tcp</td>
+<td>mysql</td>
+<td>MySQL</td>
+<td>5.0.51a-3ubuntu5</td>
+<td>cpe:/a:mysql:mysql:5.0.51a-3ubuntu5</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>3632</td>
+<td>tcp</td>
+<td>distccd</td>
+<td>distccd</td>
+<td>v1</td>
+<td></td>
+<td>(GNU) 4.2.4 (Ubuntu 4.2.4-1ubuntu4)</td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>5432</td>
+<td>tcp</td>
+<td>postgresql</td>
+<td>PostgreSQL DB</td>
+<td>8.3.0 - 8.3.7</td>
+<td>cpe:/a:postgresql:postgresql:8.3</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>5900</td>
+<td>tcp</td>
+<td>vnc</td>
+<td>VNC</td>
+<td></td>
+<td></td>
+<td>protocol 3.3</td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>6000</td>
+<td>tcp</td>
+<td>X11</td>
+<td></td>
+<td></td>
+<td></td>
+<td>access denied</td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>6667</td>
+<td>tcp</td>
+<td>irc</td>
+<td>UnrealIRCd</td>
+<td></td>
+<td>cpe:/a:unrealircd:unrealircd</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>6697</td>
+<td>tcp</td>
+<td>irc</td>
+<td>UnrealIRCd</td>
+<td></td>
+<td>cpe:/a:unrealircd:unrealircd</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>8009</td>
+<td>tcp</td>
+<td>ajp13</td>
+<td>Apache Jserv</td>
+<td></td>
+<td></td>
+<td>Protocol v1.3</td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>8180</td>
+<td>tcp</td>
+<td>http</td>
+<td>Apache Tomcat/Coyote JSP engine</td>
+<td>1.1</td>
+<td>cpe:/a:apache:coyote_http_connector:1.1</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>8787</td>
+<td>tcp</td>
+<td>drb</td>
+<td>Ruby DRb RMI</td>
+<td></td>
+<td>cpe:/a:ruby-lang:ruby:1.8</td>
+<td>Ruby 1.8; path /usr/lib/ruby/1.8/drb</td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>38933</td>
+<td>tcp</td>
+<td>nlockmgr</td>
+<td></td>
+<td>1-4</td>
+<td></td>
+<td>RPC #100021</td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>44132</td>
+<td>tcp</td>
+<td>mountd</td>
+<td></td>
+<td>1-3</td>
+<td></td>
+<td>RPC #100005</td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>45563</td>
+<td>tcp</td>
+<td>status</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>RPC #100024</td>
+</tr>
+<tr>
+<td>10.5.1.18</td>
+<td>50999</td>
+<td>tcp</td>
+<td>java-rmi</td>
+<td>GNU Classpath grmiregistry</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>21</td>
+<td>tcp</td>
+<td>ftp</td>
+<td>Microsoft ftpd</td>
+<td></td>
+<td>cpe:/a:microsoft:ftp_service</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>22</td>
+<td>tcp</td>
+<td>ssh</td>
+<td>OpenSSH</td>
+<td>7.1</td>
+<td>cpe:/a:openbsd:openssh:7.1</td>
+<td>protocol 2.0</td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>80</td>
+<td>tcp</td>
+<td>http</td>
+<td>Microsoft IIS httpd</td>
+<td>7.5</td>
+<td>cpe:/a:microsoft:internet_information_server:7.5</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>135</td>
+<td>tcp</td>
+<td>msrpc</td>
+<td>Microsoft Windows RPC</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>139</td>
+<td>tcp</td>
+<td>netbios-ssn</td>
+<td>Microsoft Windows netbios-ssn</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>445</td>
+<td>tcp</td>
+<td>microsoft-ds</td>
+<td>Microsoft Windows Server 2008 R2 - 2012 microsoft-ds</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>1617</td>
+<td>tcp</td>
+<td>java-rmi</td>
+<td>Java RMI</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>3306</td>
+<td>tcp</td>
+<td>mysql</td>
+<td>MySQL</td>
+<td>5.5.20-log</td>
+<td>cpe:/a:mysql:mysql:5.5.20-log</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>3389</td>
+<td>tcp</td>
+<td>ms-wbt-server</td>
+<td>Microsoft Terminal Service</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>3700</td>
+<td>tcp</td>
+<td>giop</td>
+<td>CORBA naming service</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>3820</td>
+<td>tcp</td>
+<td>giop</td>
+<td>CORBA naming service</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>3920</td>
+<td>tcp</td>
+<td>exasoftport1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>4848</td>
+<td>tcp</td>
+<td>http</td>
+<td>Oracle GlassFish</td>
+<td>4.0</td>
+<td>cpe:/a:oracle:jsp:2.3</td>
+<td>Servlet 3.1; JSP 2.3; Java 1.8</td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>5985</td>
+<td>tcp</td>
+<td>http</td>
+<td>Microsoft HTTPAPI httpd</td>
+<td>2.0</td>
+<td>cpe:/o:microsoft:windows</td>
+<td>SSDP/UPnP</td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>7676</td>
+<td>tcp</td>
+<td>java-message-service</td>
+<td>Java Message Service</td>
+<td>301</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>8020</td>
+<td>tcp</td>
+<td>http</td>
+<td>Apache httpd</td>
+<td></td>
+<td>cpe:/a:apache:http_server</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>8027</td>
+<td>tcp</td>
+<td>papachi-p2p-srv</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>8080</td>
+<td>tcp</td>
+<td>http</td>
+<td>Oracle GlassFish</td>
+<td>4.0</td>
+<td>cpe:/a:oracle:jsp:2.3</td>
+<td>Servlet 3.1; JSP 2.3; Java 1.8</td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>8181</td>
+<td>tcp</td>
+<td>http</td>
+<td>Oracle GlassFish</td>
+<td>4.0</td>
+<td>cpe:/a:oracle:jsp:2.3</td>
+<td>Servlet 3.1; JSP 2.3; Java 1.8</td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>8383</td>
+<td>tcp</td>
+<td>http</td>
+<td>Apache httpd</td>
+<td></td>
+<td>cpe:/a:apache:http_server</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>8484</td>
+<td>tcp</td>
+<td>http</td>
+<td>Jetty</td>
+<td>winstone-2.8</td>
+<td>cpe:/a:mortbay:jetty:winstone-2.8</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>8585</td>
+<td>tcp</td>
+<td>http</td>
+<td>Apache httpd</td>
+<td>2.2.21</td>
+<td>cpe:/a:apache:http_server:2.2.21</td>
+<td>(Win64) PHP/5.3.10 DAV/2</td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>8686</td>
+<td>tcp</td>
+<td>java-rmi</td>
+<td>Java RMI</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>9200</td>
+<td>tcp</td>
+<td>elasticsearch</td>
+<td>Elastic elasticsearch</td>
+<td>1.1.1</td>
+<td>cpe:/a:elasticsearch:elasticsearch:1.1.1</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>9300</td>
+<td>tcp</td>
+<td>vrace</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>47001</td>
+<td>tcp</td>
+<td>http</td>
+<td>Microsoft HTTPAPI httpd</td>
+<td>2.0</td>
+<td>cpe:/o:microsoft:windows</td>
+<td>SSDP/UPnP</td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>49152</td>
+<td>tcp</td>
+<td>msrpc</td>
+<td>Microsoft Windows RPC</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>49153</td>
+<td>tcp</td>
+<td>msrpc</td>
+<td>Microsoft Windows RPC</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>49154</td>
+<td>tcp</td>
+<td>msrpc</td>
+<td>Microsoft Windows RPC</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>49155</td>
+<td>tcp</td>
+<td>msrpc</td>
+<td>Microsoft Windows RPC</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>49156</td>
+<td>tcp</td>
+<td>msrpc</td>
+<td>Microsoft Windows RPC</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>49158</td>
+<td>tcp</td>
+<td>java-rmi</td>
+<td>Java RMI</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>49159</td>
+<td>tcp</td>
+<td>tcpwrapped</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>49228</td>
+<td>tcp</td>
+<td>ssh</td>
+<td>Apache Mina sshd</td>
+<td>0.8.0</td>
+<td>cpe:/a:apache:sshd:0.8.0</td>
+<td>protocol 2.0</td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>49229</td>
+<td>tcp</td>
+<td>jenkins-listener</td>
+<td>Jenkins TcpSlaveAgentListener</td>
+<td></td>
+<td>cpe:/a:cloudbees:jenkins</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>49316</td>
+<td>tcp</td>
+<td>msrpc</td>
+<td>Microsoft Windows RPC</td>
+<td></td>
+<td>cpe:/o:microsoft:windows</td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>49324</td>
+<td>tcp</td>
+<td>java-rmi</td>
+<td>Java RMI</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>49328</td>
+<td>tcp</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>49329</td>
+<td>tcp</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10.5.1.20</td>
+<td>49330</td>
+<td>tcp</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<script>
+            $(document).ready(function() {
+              $('#table-services').DataTable();
+            });
+            $('#table-services').DataTable( {
+              "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ]
+            });
+          </script>
+</div>
+<footer class="footer"><div class="container"><p class="text-muted">
+              This report was generated with <a href="https://github.com/honze-net/nmap-bootstrap-xsl">Nmap Bootstrap XSL</a>.<br>
+              Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons BY-SA</a>.<br>
+              Designed and built by Andreas Hontzia (<a href="https://www.twitter.com/honze_net">@honze_net</a>).<br></p></div></footer>
+</body>
+</html>
